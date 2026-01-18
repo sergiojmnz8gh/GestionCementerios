@@ -33,6 +33,6 @@ public class FacturaServicio {
     private Pago pago;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
-    private Cliente cliente;
+    @JoinColumn(name = "ciudadano_id", nullable = false)
+    private Ciudadano ciudadano;
 }
