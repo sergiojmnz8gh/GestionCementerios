@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { Login } from './components/login/login';
+import { RegistroCiudadano } from './components/registro-ciudadano/registro-ciudadano';
 
 @Component({
   selector: 'app-root',
-  imports: [Login],
+  imports: [Login, RegistroCiudadano],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

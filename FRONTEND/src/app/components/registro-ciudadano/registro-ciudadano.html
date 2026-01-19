@@ -1,0 +1,20 @@
+<label for="provincia">Seleccione Provincia: </label>
+<select name="provincia" [(ngModel)]="provinciaSeleccionada" (change)="cambioProvincia()" required>
+    <option value="">---- Seleccione Provincia ----</option>
+    @for (p of provincias; track p.CPRO) {
+        <option [value]="p.CPRO">{{ p.PRO }}</option>
+    }
+</select>
+<br>
+
+<label for="localidad">Seleccione Localidad: </label>
+<select name="localidad" [(ngModel)]="localidadSeleccionada" [disabled]="localidades.length==0" required>
+    <option value="">---- Seleccione Localidad ----</option>
+    @for (l of localidades; track l.MUN) {
+        <option [value]="l.CMUN">{{ l.DMUN50 }}</option>
+    }
+</select>
+<br>
+<br>
+<p>Provincia elegida: {{provinciaSeleccionada}}</p>
+<p>Localidad elegida: {{localidadSeleccionada}}</p>
