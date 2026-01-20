@@ -9,19 +9,25 @@
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" name="email" id="email" required email
-                    [(ngModel)]="email" placeholder="nombre@ejemplo.com">
+                    [(ngModel)]="email">
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" class="form-control" name="password" id="password" required minlength="6"
-                    [(ngModel)]="password" placeholder="******">
+                    [(ngModel)]="password">
                 </div>
 
                 <div class="d-grid gap-2">
                     <button type="button" class="btn btn-primary" (click)="acceder()">Acceder</button>
                 </div>
             </form>
+
+            <div class="text-center mt-3">
+                <span class="text-muted small">¿No tienes cuenta aún?</span>
+                <br>
+                <a routerLink="/registro" class="text-decoration-none fw-bold">Regístrate como Ciudadano</a>
+            </div>
 
         </div>
     </div>

@@ -1,1 +1,14 @@
-<app-registro-ciudadano></app-registro-ciudadano>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-primary py-3 shadow-md fixed-top custom-navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold fs-4" routerLink="/login">
+            <i class="bi bi-bank2 me-2"></i> Gestión de Cementerios Nacional
+        </a>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link btn btn-outline px-4 text-white" routerLink="/login">Acceder</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <router-outlet></router-outlet>
+</div>
