@@ -32,8 +32,8 @@ public class AuthService {
         }
 
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-        Rol rolCiudadano = rolRepository.findByNombre("USUARIO")
-                .orElseThrow(() -> new RuntimeException("Rol USUARIO no encontrado"));
+        Rol rolCiudadano = rolRepository.findByNombre("CIUDADANO")
+                .orElseThrow(() -> new RuntimeException("Rol CIUDADANO no encontrado"));
         usuario.setRol(rolCiudadano);
         
         Usuario usuarioGuardado = usuarioRepository.save(usuario);

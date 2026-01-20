@@ -1,20 +1,79 @@
-<label for="provincia">Seleccione Provincia: </label>
-<select name="provincia" [(ngModel)]="provinciaSeleccionada" (change)="cambioProvincia()" required>
-    <option value="">---- Seleccione Provincia ----</option>
-    @for (p of provincias; track p.CPRO) {
-        <option [value]="p.CPRO">{{ p.PRO }}</option>
-    }
-</select>
-<br>
+<div class="container d-flex justify-content-center align-items-center min-vh-100 py-5">
+    <div class="card shadow p-4" style="width: 700px;">
+        <div class="card-body">
+            <h3 class="text-center mb-4 text-primary">
+                <i class="bi bi-person-plus-fill"></i> Alta de Ciudadano
+            </h3>
 
-<label for="localidad">Seleccione Localidad: </label>
-<select name="localidad" [(ngModel)]="localidadSeleccionada" [disabled]="localidades.length==0" required>
-    <option value="">---- Seleccione Localidad ----</option>
-    @for (l of localidades; track l.MUN) {
-        <option [value]="l.CMUN">{{ l.DMUN50 }}</option>
-    }
-</select>
-<br>
-<br>
-<p>Provincia elegida: {{provinciaSeleccionada}}</p>
-<p>Localidad elegida: {{localidadSeleccionada}}</p>
+            <form [formGroup]="registroForm" (ngSubmit)="enviarRegistro()">
+                <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" formControlName="email">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">DNI</label>
+                        <input type="text" class="form-control" formControlName="dni">
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" formControlName="nombre">
+                    </div>
+                    <div class="col-md-7 mb-3">
+                        <label class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" formControlName="apellidos">
+                    </div>
+
+                    <div class="col-md-8 mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" formControlName="password">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" formControlName="telefono">
+                    </div>
+
+                    <div class="col-md-8 mb-3">
+                        <label class="form-label">Confirmar Contraseña</label>
+                        <input type="password" class="form-control" formControlName="confirmarPassword">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" formControlName="fechaNacimiento">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Provincia</label>
+                        <select class="form-select" formControlName="provincia" (change)="onProvinciaChange()">
+                            <option value="">---- Seleccione ----</option>
+                            @for (p of provincias; track p.CPRO) {
+                                <option [value]="p.CPRO">{{ p.PRO }}</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Localidad</label>
+                        <select class="form-select" formControlName="localidad" [disabled]="localidades.length==0">
+                            <option value="">---- Seleccione ----</option>
+                            @for (l of localidades; track l.CMUN) {
+                                <option [value]="l.DMUN50">{{ l.DMUN50 }}</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">Dirección Postal</label>
+                        <input type="text" class="form-control" formControlName="direccion">
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg" [disabled]="registroForm.invalid">
+                        Registrar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

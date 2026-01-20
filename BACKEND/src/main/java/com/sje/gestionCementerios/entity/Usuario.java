@@ -47,6 +47,11 @@ public class Usuario implements UserDetails {
     @JoinColumn(name = "rol_id", nullable = false)
     private Rol rol;
 
+    public Usuario(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_" + rol.getNombre()));

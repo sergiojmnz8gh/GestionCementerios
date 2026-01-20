@@ -1,0 +1,7 @@
+/* Selecciona el botón cuando tiene el atributo disabled */
+.btn:disabled {
+    background-color: #cccccc;
+    color: #000000;
+    cursor: not-allowed;
+    pointer-events: all; 
+}

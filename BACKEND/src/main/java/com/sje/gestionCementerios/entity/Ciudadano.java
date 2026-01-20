@@ -53,4 +53,14 @@ public class Ciudadano {
 
     @OneToMany(mappedBy = "ciudadano", cascade = CascadeType.ALL)
     private List<Concesion> concesiones;
+
+    public Ciudadano(String dni, String nombre, String apellidos, String telefono, String provincia, String localidad, String direccion) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.provincia = provincia;
+        this.localidad = localidad;
+        this.direccion = direccion;
+    }
 }
