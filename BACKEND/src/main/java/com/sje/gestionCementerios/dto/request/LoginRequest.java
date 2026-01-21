@@ -1,4 +1,4 @@
-package com.sje.gestionCementerios.dto;
+package com.sje.gestionCementerios.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

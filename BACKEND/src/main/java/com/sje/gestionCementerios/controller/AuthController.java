@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sje.gestionCementerios.dto.LoginRequest;
-import com.sje.gestionCementerios.dto.RegistroAyuntamientoDTO;
-import com.sje.gestionCementerios.dto.RegistroCiudadanoDTO;
+import com.sje.gestionCementerios.dto.request.AyuntamientoRequest;
+import com.sje.gestionCementerios.dto.request.CiudadanoRequest;
+import com.sje.gestionCementerios.dto.request.LoginRequest;
 import com.sje.gestionCementerios.entity.Ciudadano;
 import com.sje.gestionCementerios.entity.Usuario;
 import com.sje.gestionCementerios.security.JwtService;
@@ -34,7 +34,7 @@ public class AuthController {
     private final JwtService jwtService;
 
     @PostMapping("/registrar/ciudadano")
-    public ResponseEntity<Usuario> register(@RequestBody @Valid RegistroCiudadanoDTO registroCiudadanoDTO) {
+    public ResponseEntity<Usuario> register(@RequestBody @Valid CiudadanoRequest registroCiudadanoDTO) {
 
         Usuario usuario = new Usuario(registroCiudadanoDTO.getEmail(), registroCiudadanoDTO.getPassword());
         Ciudadano ciudadano = new Ciudadano (registroCiudadanoDTO.getDni(),
@@ -50,7 +50,7 @@ public class AuthController {
     }
 
     @PostMapping("/registrar/ayuntamiento")
-    public ResponseEntity<Usuario> register(@RequestBody @Valid RegistroAyuntamientoDTO registroAyuntamientoDTO) {
+    public ResponseEntity<Usuario> register(@RequestBody @Valid AyuntamientoRequest registroAyuntamientoDTO) {
 
         Usuario usuarioRegistrado = authService.registrarAyuntamiento(registroAyuntamientoDTO.getUsuario(), registroAyuntamientoDTO.getAyuntamiento());
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRegistrado);

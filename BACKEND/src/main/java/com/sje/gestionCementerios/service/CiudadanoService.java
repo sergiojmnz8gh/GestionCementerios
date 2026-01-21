@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.sje.gestionCementerios.entity.Ciudadano;
+import com.sje.gestionCementerios.dto.mapper.CiudadanoMapper;
+import com.sje.gestionCementerios.dto.response.CiudadanoResponse;
 import com.sje.gestionCementerios.repository.CiudadanoRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -14,12 +15,18 @@ import lombok.RequiredArgsConstructor;
 public class CiudadanoService {
 
     private final CiudadanoRepository ciudadanoRepository;
+    private final CiudadanoMapper ciudadanoMapper;
 
-    public List<Ciudadano> buscarTodos() {
-        return ciudadanoRepository.findAll();
+    public List<CiudadanoResponse> buscarTodos() {
+        return ciudadanoRepository.findAll()
+            .stream()
+            .map(ciudadanoMapper::toResponseDTO)
+            .toList();
     }
 
-    public Ciudadano buscarPorId(Integer id) {
-        return ciudadanoRepository.findById(id).orElseThrow();
+    public CiudadanoResponse buscarPorId(Integer id) {
+        return ciudadanoRepository.findById(id)
+        .map(ciudadanoMapper::toResponseDTO)
+        .orElseThrow();
     }
 }

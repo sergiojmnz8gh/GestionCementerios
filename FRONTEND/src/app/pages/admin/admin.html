@@ -1,0 +1,50 @@
+<div class="d-flex" style="min-height: 100vh; padding-top: 50px;">
+    <div class="bg-dark text-white p-3 shadow" style="width: 280px;">
+        <h4 class="text-center mb-4 border-bottom pb-3">
+            <i class="bi bi-shield-lock-fill"></i> Admin Panel
+        </h4>
+        
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item mb-2">
+                <button class="nav-link w-100 text-start text-white btn-sidebar" 
+                        [class.active]="vista == 'ciudadanos'"
+                        (click)="vista = 'ciudadanos'">
+                    <i class="bi bi-people-fill me-2"></i> Ciudadanos
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link w-100 text-start text-white btn-sidebar" 
+                        [class.active]="vista == 'ayuntamientos'"
+                        (click)="vista = 'ayuntamientos'">
+                    <i class="bi bi-building me-2"></i> Ayuntamientos
+                </button>
+            </li>
+        </ul>
+        
+        <hr>
+        <div class="dropdown">
+            <button class="btn btn-danger w-100">
+                <i class="bi bi-box-arrow-left me-2"></i> Cerrar Sesión
+            </button>
+        </div>
+    </div>
+
+    <div class="flex-grow-1 bg-light p-4 overflow-auto">
+        <header class="mb-4 d-flex justify-content-between align-items-center bg-white p-3 shadow-sm rounded">
+            <h2 class="h4 mb-0 text-secondary">
+                <span class="text-primary text-capitalize">{{ vista }}</span>
+            </h2>
+            <span class="badge bg-primary px-3 py-2">Administrador</span>
+        </header>
+
+        <div class="card border-0 shadow-sm p-4">
+            @if (vista == 'ciudadanos') {
+                <app-lista-ciudadanos></app-lista-ciudadanos>
+            } @else if (vista == 'ayuntamientos') {
+                <div class="alert alert-info border-0 shadow-sm">
+                    <i class="bi bi-info-circle me-2"></i> Próximamente: Lista de Ayuntamientos
+                </div>
+            }
+        </div>
+    </div>
+</div>
