@@ -62,5 +62,6 @@ public class Ciudadano {
         this.provincia = provincia;
         this.localidad = localidad;
         this.direccion = direccion;
+        this.concesiones = null;
     }
 }

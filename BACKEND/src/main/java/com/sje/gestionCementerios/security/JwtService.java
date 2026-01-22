@@ -22,7 +22,7 @@ public class JwtService {
 
     public String generateToken(Usuario usuario) {
         Instant now = Instant.now();
-        Date expiryDate = Date.from(now.plus(1, ChronoUnit.HOURS));
+        Date expiryDate = Date.from(now.plus(30, ChronoUnit.DAYS));
 
     return Jwts.builder()
             .subject(usuario.getEmail())

@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sje.gestionCementerios.dto.request.AyuntamientoRequest;
 import com.sje.gestionCementerios.dto.request.CiudadanoRequest;
 import com.sje.gestionCementerios.dto.request.LoginRequest;
-import com.sje.gestionCementerios.entity.Ciudadano;
 import com.sje.gestionCementerios.entity.Usuario;
 import com.sje.gestionCementerios.security.JwtService;
 import com.sje.gestionCementerios.security.TokenResponse;
@@ -34,26 +35,19 @@ public class AuthController {
     private final JwtService jwtService;
 
     @PostMapping("/registrar/ciudadano")
-    public ResponseEntity<Usuario> register(@RequestBody @Valid CiudadanoRequest registroCiudadanoDTO) {
+    public ResponseEntity<TokenResponse> register(@RequestBody @Valid CiudadanoRequest registroCiudadanoDTO) {
 
-        Usuario usuario = new Usuario(registroCiudadanoDTO.getEmail(), registroCiudadanoDTO.getPassword());
-        Ciudadano ciudadano = new Ciudadano (registroCiudadanoDTO.getDni(),
-                                            registroCiudadanoDTO.getNombre(),
-                                            registroCiudadanoDTO.getApellidos(),
-                                            registroCiudadanoDTO.getTelefono(),
-                                            registroCiudadanoDTO.getProvincia(),
-                                            registroCiudadanoDTO.getLocalidad(),
-                                            registroCiudadanoDTO.getDireccion());
-
-        Usuario usuarioRegistrado = authService.registrarCiudadano(usuario, ciudadano);
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRegistrado);
+        Usuario usuario = authService.registrarCiudadano(registroCiudadanoDTO);
+        String token = jwtService.generateToken(usuario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new TokenResponse(token));
     }
 
     @PostMapping("/registrar/ayuntamiento")
-    public ResponseEntity<Usuario> register(@RequestBody @Valid AyuntamientoRequest registroAyuntamientoDTO) {
+    public ResponseEntity<TokenResponse> register(@RequestBody @Valid AyuntamientoRequest registroAyuntamientoDTO, @RequestPart("logo") MultipartFile logo) {
 
-        Usuario usuarioRegistrado = authService.registrarAyuntamiento(registroAyuntamientoDTO.getUsuario(), registroAyuntamientoDTO.getAyuntamiento());
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRegistrado);
+        Usuario usuario = authService.registrarAyuntamiento(registroAyuntamientoDTO, logo);
+        String token = jwtService.generateToken(usuario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new TokenResponse(token));
     }
 
     @PostMapping("/login")

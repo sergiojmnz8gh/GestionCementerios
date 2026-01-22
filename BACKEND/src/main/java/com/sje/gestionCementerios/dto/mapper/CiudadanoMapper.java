@@ -9,7 +9,6 @@ import com.sje.gestionCementerios.entity.Ciudadano;
 
 @Mapper(componentModel = "spring")
 public interface CiudadanoMapper {
-
     @Mapping(target = "email", source = "usuario.email")
     CiudadanoResponse toResponseDTO(Ciudadano ciudadano);
 

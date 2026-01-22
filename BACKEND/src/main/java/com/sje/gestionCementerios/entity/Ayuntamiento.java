@@ -44,4 +44,12 @@ public class Ayuntamiento {
 
     @OneToMany(mappedBy = "ayuntamiento", cascade = CascadeType.ALL)
     private List<Cementerio> cementerios;
+
+    public Ayuntamiento(String localidad, String provincia) {
+        this.localidad = localidad;
+        this.provincia = provincia;
+        this.config = null;
+        this.logoUrl = null;
+        this.cementerios = null;
+    }
 }

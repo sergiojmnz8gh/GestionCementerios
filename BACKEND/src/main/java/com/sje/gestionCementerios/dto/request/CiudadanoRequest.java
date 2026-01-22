@@ -7,7 +7,6 @@ import lombok.Data;
 
 @Data
 public class CiudadanoRequest {
-
     @NotBlank(message = "El email es obligatorio")
     @Email(message = "Formato de email inválido")
     private String email;
