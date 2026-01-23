@@ -3,11 +3,11 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Ciudadano } from '../../../../interfaces/ciudadano';
 import { CiudadanoService } from '../../../../services/ciudadanoService/ciudadano-service';
+import { FormCiudadano } from '../form-ciudadano/form-ciudadano';
 
 @Component({
   selector: 'app-lista-ciudadanos',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FormCiudadano],
   templateUrl: './lista-ciudadanos.html',
   styleUrl: './lista-ciudadanos.scss',
 })
@@ -15,6 +15,8 @@ export class ListaCiudadanos implements OnInit {
   ciudadanos: Ciudadano[] = [];
   cargando: boolean = true;
   buscando: string = '';
+  mostrarModal = false;
+  ciudadanoSeleccionado: Ciudadano | null = null;
 
   constructor(
     private ciudadanoService: CiudadanoService, 
@@ -53,16 +55,49 @@ export class ListaCiudadanos implements OnInit {
     );
   }
 
-  abrirModalCrear(): void {
-  }
-
   verDetalles(ciudadano: Ciudadano): void {
+    
   }
 
-  editarCiudadano(ciudadano: Ciudadano): void {
+  abrirModal() {
+    this.ciudadanoSeleccionado = null;
+    this.mostrarModal = true;
+  }
+
+  editarCiudadano(c: Ciudadano) {
+    this.ciudadanoSeleccionado = c;
+    this.mostrarModal = true;
+  }
+
+  procesarGuardado(datos: any) {
+    if (this.ciudadanoSeleccionado) {
+      this.ciudadanoService.actualizar(this.ciudadanoSeleccionado.id, datos).subscribe({
+        next: () => this.finalizarAccion('Ciudadano actualizado'),
+        error: (err: any) => console.error(err)
+      });
+    } else {
+      this.ciudadanoService.crear(datos).subscribe({
+        next: () => this.finalizarAccion('Ciudadano creado'),
+        error: (err: any) => console.error(err)
+      });
+    }
+  }
+
+  private finalizarAccion(mensaje: string) {
+    this.mostrarModal = false;
+    this.cargarCiudadanos();
   }
 
   eliminarCiudadano(id: number): void {
-    
+    if (confirm('¿Estás seguro de que deseas eliminar este ciudadano?')) {
+      this.ciudadanoService.eliminar(id).subscribe({
+        next: () => {
+          this.cargarCiudadanos();
+        },
+        error: (err) => {
+          console.error('Error al eliminar ciudadano', err);
+        }
+      });
+    }
   }
 }

@@ -6,7 +6,6 @@ import { validadores } from '../../validadores';
 
 @Component({
   selector: 'app-registro-ciudadano',
-  standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './registro-ciudadano.html',
   styleUrl: './registro-ciudadano.scss',

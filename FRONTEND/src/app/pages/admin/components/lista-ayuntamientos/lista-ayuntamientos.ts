@@ -6,7 +6,6 @@ import { AyuntamientoService } from '../../../../services/ayuntamientoService/ay
 
 @Component({
   selector: 'app-lista-ayuntamientos',
-  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './lista-ayuntamientos.html',
   styleUrl: './lista-ayuntamientos.scss',
@@ -58,6 +57,10 @@ export class ListaAyuntamientos implements OnInit {
 
   verDetalles(ayto: Ayuntamiento): void {
 
+  }
+
+  editarAyuntamiento(ayto: Ayuntamiento): void {
+  
   }
 
   eliminarAyuntamiento(id: number): void {

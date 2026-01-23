@@ -1,0 +1,75 @@
+<div class="modal-content border-0 shadow-lg">
+    <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">
+            <i class="bi" [class.bi-person-plus]="!ciudadanoParaEditar" [class.bi-pencil]="ciudadanoParaEditar"></i>
+            {{ ciudadanoParaEditar ? 'Editar Ciudadano' : 'Registrar Nuevo Ciudadano' }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" (click)="cerrar.emit()"></button>
+    </div>
+
+    <form [formGroup]="registroForm" (ngSubmit)="enviar()">
+        <div class="modal-body p-4">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Email</label>
+                    <input type="email" formControlName="email" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">DNI</label>
+                    <input type="text" formControlName="dni" class="form-control"
+                        (input)="registroForm.get('dni')?.setValue($any($event.target).value.toUpperCase())">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Nombre</label>
+                    <input type="text" formControlName="nombre" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Apellidos</label>
+                    <input type="text" formControlName="apellidos" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Teléfono</label>
+                    <input type="text" formControlName="telefono" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Fecha de nacimiento</label>
+                    <input type="date" formControlName="fechaNacimiento" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Provincia</label>
+                    <select formControlName="provincia" class="form-select" (change)="onProvinciaChange()">
+                        <option value="">Seleccione provincia...</option>
+                        @for (p of provincias; track p.CPRO) {
+                        <option [value]="p.CPRO">{{ p.PRO }}</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Localidad</label>
+                    <select formControlName="localidad" class="form-select">
+                        <option value="">Seleccione localidad...</option>
+                        @for (l of localidades; track l.CMUM) {
+                        <option [value]="l.DMUM50">{{ l.DMUM50 }}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label fw-bold">Dirección</label>
+                    <input type="text" formControlName="direccion" class="form-control">
+                </div>
+                    
+            </div>
+        </div>
+
+        <div class="modal-footer bg-light">
+            <button type="button" class="btn btn-secondary" (click)="cerrar.emit()">Cancelar</button>
+            <button type="submit" class="btn btn-primary px-4" [disabled]="registroForm.invalid">
+                {{ ciudadanoParaEditar ? 'Actualizar' : 'Guardar' }}
+            </button>
+        </div>
+    </form>
+</div>
