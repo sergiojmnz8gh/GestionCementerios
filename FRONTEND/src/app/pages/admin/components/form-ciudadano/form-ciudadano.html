@@ -1,7 +1,7 @@
 <div class="modal-content border-0 shadow-lg">
-    <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">
-            <i class="bi" [class.bi-person-plus]="!ciudadanoParaEditar" [class.bi-pencil]="ciudadanoParaEditar"></i>
+    <div class="modal-header text-white" style="background-color: var(--color-primario); border-bottom: 4px solid var(--color-secundario);">
+        <h5 class="modal-title fw-bold">
+            <i class="bi me-2" [class.bi-person-plus]="!ciudadanoParaEditar" [class.bi-pencil]="ciudadanoParaEditar"></i>
             {{ ciudadanoParaEditar ? 'Editar Ciudadano' : 'Registrar Nuevo Ciudadano' }}
         </h5>
         <button type="button" class="btn-close btn-close-white" (click)="cerrar.emit()"></button>
@@ -12,35 +12,35 @@
             <div class="row g-3">
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Email</label>
-                    <input type="email" formControlName="email" class="form-control">
+                    <input type="email" formControlName="email" class="form-control custom-input" placeholder="correo@gcn.es">
                 </div>
                 <div class="col-md-6">
                     <label class="form-label fw-bold">DNI</label>
-                    <input type="text" formControlName="dni" class="form-control"
-                        (input)="registroForm.get('dni')?.setValue($any($event.target).value.toUpperCase())">
+                    <input type="text" formControlName="dni" class="form-control custom-input"
+                        (input)="registroForm.get('dni')?.setValue($any($event.target).value.toUpperCase())" placeholder="00000000X">
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Nombre</label>
-                    <input type="text" formControlName="nombre" class="form-control">
+                    <input type="text" formControlName="nombre" class="form-control custom-input">
                 </div>
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Apellidos</label>
-                    <input type="text" formControlName="apellidos" class="form-control">
+                    <input type="text" formControlName="apellidos" class="form-control custom-input">
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Teléfono</label>
-                    <input type="text" formControlName="telefono" class="form-control">
+                    <input type="text" formControlName="telefono" class="form-control custom-input">
                 </div>
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Fecha de nacimiento</label>
-                    <input type="date" formControlName="fechaNacimiento" class="form-control">
+                    <input type="date" formControlName="fechaNacimiento" class="form-control custom-input">
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Provincia</label>
-                    <select formControlName="provincia" class="form-select" (change)="onProvinciaChange()">
+                    <select formControlName="provincia" class="form-select custom-input" (change)="onProvinciaChange()">
                         <option value="">Seleccione provincia...</option>
                         @for (p of provincias; track p.CPRO) {
                         <option [value]="p.CPRO">{{ p.PRO }}</option>
@@ -49,26 +49,28 @@
                 </div>
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Localidad</label>
-                    <select formControlName="localidad" class="form-select">
+                    <select formControlName="localidad" class="form-select custom-input">
                         <option value="">Seleccione localidad...</option>
-                        @for (l of localidades; track l.CMUM) {
-                        <option [value]="l.DMUM50">{{ l.DMUM50 }}</option>
+                        @for (l of localidades; track l.DMUN50) {
+                        <option [value]="l.DMUN50">{{ l.DMUN50 }}</option>
                         }
                     </select>
                 </div>
 
                 <div class="col-12">
                     <label class="form-label fw-bold">Dirección</label>
-                    <input type="text" formControlName="direccion" class="form-control">
+                    <input type="text" formControlName="direccion" class="form-control custom-input">
                 </div>
-                    
             </div>
         </div>
 
-        <div class="modal-footer bg-light">
-            <button type="button" class="btn btn-secondary" (click)="cerrar.emit()">Cancelar</button>
-            <button type="submit" class="btn btn-primary px-4" [disabled]="registroForm.invalid">
-                {{ ciudadanoParaEditar ? 'Actualizar' : 'Guardar' }}
+        <div class="modal-footer bg-light border-0">
+            <button type="button" class="btn btn-outline-secondary px-4" (click)="cerrar.emit()">
+                Cancelar
+            </button>
+            <button type="submit" class="btn btn-login-submit px-5" [disabled]="registroForm.invalid">
+                <i class="bi bi-check-lg me-1"></i>
+                {{ ciudadanoParaEditar ? 'Actualizar' : 'Guardar Datos' }}
             </button>
         </div>
     </form>

@@ -37,6 +37,16 @@ export class FormCiudadano implements OnInit {
     this.geoApi.getProvincias().subscribe({
       next: (datos) => {
         this.provincias = datos;
+
+        if (this.ciudadanoParaEditar) {
+        const provEncontrada = this.provincias.find(p => p.PRO == this.ciudadanoParaEditar?.provincia);
+        
+        if (provEncontrada) {
+          this.registroForm.patchValue({ provincia: provEncontrada.CPRO });
+          this.cargarLocalidades(provEncontrada.CPRO);
+        }
+      }
+
         this.relo.markForCheck();
       }
     });
@@ -57,6 +67,15 @@ export class FormCiudadano implements OnInit {
         }
       });
     }
+  }
+
+  private cargarLocalidades(codProv: string) {
+    this.geoApi.getLocalidades(codProv).subscribe({
+      next: (datos) => {
+        this.localidades = datos;
+        this.relo.markForCheck();
+      }
+    });
   }
 
   enviar() {

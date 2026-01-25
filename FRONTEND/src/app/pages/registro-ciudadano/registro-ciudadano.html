@@ -1,61 +1,62 @@
 <div class="container d-flex justify-content-center align-items-center min-vh-100 py-5">
-    <div class="card shadow p-4" style="width: 700px;">
-        <div class="card-body">
-            <h3 class="text-center mb-4 text-primary">
-                <i class="bi bi-person-plus-fill"></i> Alta de Ciudadano
-            </h3>
+    <div class="card shadow-lg custom-login-card" style="max-width: 800px; width: 100%;">
+        <div class="card-body p-4 p-md-5">
+            <div class="text-center mb-4">
+                <i class="bi bi-person-plus-fill fs-1 text-primary"></i>
+                <h2 class="fw-bold text-primary">Alta de Ciudadano</h2>
+            </div>
 
             <form [formGroup]="registroForm" (ngSubmit)="enviarRegistro()">
                 <div class="row">
                     <div class="col-md-8 mb-3">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control" formControlName="email">
+                        <label class="form-label fw-semibold">Email</label>
+                        <input type="email" class="form-control custom-input" formControlName="email" placeholder="correo@ejemplo.com">
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label class="form-label">DNI</label>
-                        <input type="text" class="form-control" formControlName="dni">
+                        <label class="form-label fw-semibold">DNI</label>
+                        <input type="text" class="form-control custom-input" formControlName="dni" placeholder="12345678X">
                     </div>
 
                     <div class="col-md-5 mb-3">
-                        <label class="form-label">Nombre</label>
-                        <input type="text" class="form-control" formControlName="nombre">
+                        <label class="form-label fw-semibold">Nombre</label>
+                        <input type="text" class="form-control custom-input" formControlName="nombre">
                     </div>
                     <div class="col-md-7 mb-3">
-                        <label class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" formControlName="apellidos">
+                        <label class="form-label fw-semibold">Apellidos</label>
+                        <input type="text" class="form-control custom-input" formControlName="apellidos">
                     </div>
 
                     <div class="col-md-8 mb-3">
-                        <label class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" formControlName="password">
+                        <label class="form-label fw-semibold">Contraseña</label>
+                        <input type="password" class="form-control custom-input" formControlName="password">
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label class="form-label">Teléfono</label>
-                        <input type="text" class="form-control" formControlName="telefono">
+                        <label class="form-label fw-semibold">Teléfono</label>
+                        <input type="text" class="form-control custom-input" formControlName="telefono">
                     </div>
 
                     <div class="col-md-8 mb-3">
-                        <label class="form-label">Confirmar Contraseña</label>
-                        <input type="password" class="form-control" formControlName="confirmarPassword">
+                        <label class="form-label fw-semibold">Confirmar Contraseña</label>
+                        <input type="password" class="form-control custom-input" formControlName="confirmarPassword">
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label class="form-label">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" formControlName="fechaNacimiento">
+                        <label class="form-label fw-semibold">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control custom-input" formControlName="fechaNacimiento">
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">Provincia</label>
-                        <select class="form-select" formControlName="provincia" (change)="onProvinciaChange()">
-                            <option value="">---- Seleccione ----</option>
+                        <label class="form-label fw-semibold">Provincia</label>
+                        <select class="form-select custom-input" formControlName="provincia" (change)="onProvinciaChange()">
+                            <option value="">-- Seleccione --</option>
                             @for (p of provincias; track p.CPRO) {
                                 <option [value]="p.CPRO">{{ p.PRO }}</option>
                             }
                         </select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">Localidad</label>
-                        <select class="form-select" formControlName="localidad" [disabled]="localidades.length==0">
-                            <option value="">---- Seleccione ----</option>
+                        <label class="form-label fw-semibold">Localidad</label>
+                        <select class="form-select custom-input" formControlName="localidad" [disabled]="localidades.length==0">
+                            <option value="">-- Seleccione --</option>
                             @for (l of localidades; track l.CMUN) {
                                 <option [value]="l.DMUN50">{{ l.DMUN50 }}</option>
                             }
@@ -63,15 +64,16 @@
                     </div>
 
                     <div class="col-md-12 mb-3">
-                        <label class="form-label">Dirección Postal</label>
-                        <input type="text" class="form-control" formControlName="direccion">
+                        <label class="form-label fw-semibold">Dirección</label>
+                        <input type="text" class="form-control custom-input" formControlName="direccion">
                     </div>
                 </div>
 
                 <div class="d-grid gap-2 mt-4">
-                    <button type="submit" class="btn btn-primary btn-lg" [disabled]="registroForm.invalid">
+                    <button type="submit" class="btn btn-login-submit btn-lg py-2" [disabled]="registroForm.invalid">
                         Registrar
                     </button>
+                    <a routerLink="/login" class="btn btn-link link-primario mt-2">¿Ya tienes cuenta? Inicia sesión</a>
                 </div>
             </form>
         </div>

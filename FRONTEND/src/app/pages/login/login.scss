@@ -1,0 +1,35 @@
+.custom-login-card {
+    width: 420px;
+    border: none;
+    border-top: 5px solid var(--color-secundario);
+    border-radius: 20px;
+}
+
+.custom-input:focus {
+    border-color: var(--color-primario);
+}
+
+.btn-login-submit {
+    background-color: var(--color-secundario);
+    color: var(--color-fondo);
+    border: 2px solid var(--color-fondo);
+    border-radius: 10px;
+    transition: all 0.4s ease;
+}
+
+.btn-login-submit:hover {
+    background-color: var(--color-secundario);
+    border-color: var(--color-secundario);
+    color: var(--color-fondo);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.link-primario {
+    color: var(--color-primario);
+    transition: color 0.4s ease;
+}
+
+.link-primario:hover {
+    color: var(--color-secundario);
+}

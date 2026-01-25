@@ -29,4 +29,15 @@ public class CiudadanoService {
         .map(ciudadanoMapper::toResponseDTO)
         .orElseThrow();
     }
+
+    public CiudadanoResponse actualizar(CiudadanoResponse ciudadano) {
+        return ciudadanoRepository.findById(ciudadano.getId())
+            .map(ciudadanoRepository::save)
+            .map(ciudadanoMapper::toResponseDTO)
+            .orElseThrow();
+    }
+
+    public void eliminar(Integer id) {
+        ciudadanoRepository.deleteById(id);
+    }
 }

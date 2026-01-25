@@ -1,5 +1,6 @@
 package com.sje.gestionCementerios.entity;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -26,6 +27,9 @@ public class Ciudadano {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false, length = 20)
+    private String dni;
+
     @Column(nullable = false, length = 50)
     private String nombre;
 
@@ -36,7 +40,7 @@ public class Ciudadano {
     private String telefono;
 
     @Column(nullable = false)
-    private String direccion;
+    private LocalDate fechaNacimiento;
 
     @Column(nullable = false, length = 50)
     private String localidad;
@@ -44,8 +48,8 @@ public class Ciudadano {
     @Column(nullable = false, length = 100)
     private String provincia;
 
-    @Column(nullable = false, length = 20)
-    private String dni;
+    @Column(nullable = false)
+    private String direccion;
 
     @OneToOne
     @JoinColumn(name = "usuario_id", nullable = false, unique = true)
@@ -54,11 +58,12 @@ public class Ciudadano {
     @OneToMany(mappedBy = "ciudadano", cascade = CascadeType.ALL)
     private List<Concesion> concesiones;
 
-    public Ciudadano(String dni, String nombre, String apellidos, String telefono, String provincia, String localidad, String direccion) {
+    public Ciudadano(String dni, String nombre, String apellidos, String telefono, LocalDate fechaNacimiento, String provincia, String localidad, String direccion) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
+        this.fechaNacimiento = fechaNacimiento;
         this.provincia = provincia;
         this.localidad = localidad;
         this.direccion = direccion;

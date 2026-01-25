@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+
+:root {
+    --color-primario: #005555;
+    --color-secundario: #660000;
+    --color-fondo: #f8f8f8;
+    --color-texto: #080808;
+}
+
+body {
+    font-family: 'Zalando Sans', sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    padding-top: 50px;
+    --bs-primary: var(--color-primario);
+    --bs-primary-rgb: 0, 85, 85;
+    --bs-secondary: var(--color-secundario);
+    --bs-secondary-rgb: 102, 0, 0;
+}

@@ -1,34 +1,44 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card shadow p-4" style="width: 400px;">
-        <div class="card-body">
-            <h3 class="text-center mb-4">
-                <i class="bi bi-person-bounding-box text-primary"></i> Iniciar Sesión
-            </h3>
+    <div class="card shadow-lg custom-login-card p-2">
+        <div class="card-body p-4">
+            <div class="text-center mb-4">
+                <i class="bi bi-person-bounding-box fs-1 text-primary"></i>
+                <h2 class="fw-bold text-primary">Iniciar Sesión</h2>
+            </div>
 
             <form>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" name="email" id="email" required email
-                    [(ngModel)]="email">
+                    <label for="email" class="form-label fw-semibold">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="bi bi-envelope text-muted"></i></span>
+                        <input type="email" class="form-control custom-input" name="email" id="email" required
+                            [(ngModel)]="email" placeholder="ejemplo@gcn.com">
+                    </div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" name="password" id="password" required minlength="6"
-                    [(ngModel)]="password">
+                <div class="mb-4">
+                    <label for="password" class="form-label fw-semibold">Contraseña</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="bi bi-lock text-muted"></i></span>
+                        <input type="password" class="form-control custom-input" name="password" id="password" required
+                            [(ngModel)]="password" placeholder="•••••••••">
+                    </div>
                 </div>
 
                 <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-primary" (click)="acceder()">Acceder</button>
+                    <button type="button" class="btn btn-login-submit py-2 fw-bold" (click)="acceder()">
+                        Acceder
+                    </button>
                 </div>
             </form>
 
-            <div class="text-center mt-3">
+            <hr class="my-4">
+
+            <div class="text-center">
                 <span class="text-muted small">¿No tienes cuenta aún?</span>
                 <br>
-                <a routerLink="/registro" class="text-decoration-none fw-bold">Regístrate como Ciudadano</a>
+                <a routerLink="/registro" class="link-primario fw-bold">Regístrate ahora como Ciudadano</a>
             </div>
-
         </div>
     </div>
 </div>

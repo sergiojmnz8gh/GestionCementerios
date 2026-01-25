@@ -1,0 +1,25 @@
+/* Color de contraste para botones de edición en tabla */
+.btn-outline-warning-custom {
+    color: #856404;
+    border-color: #ffc107;
+}
+
+.btn-outline-warning-custom:hover {
+    background-color: #ffc107;
+    color: black;
+}
+
+/* Ajustes para el Modal */
+.modal-backdrop {
+    background-color: var(--color-primario);
+    opacity: 0.6 !important; /* El fondo del modal tendrá un tinte verde azulado */
+}
+
+/* Transición suave para el buscador */
+.custom-search .custom-input {
+    border-radius: 0 10px 10px 0;
+}
+
+.custom-search .input-group-text {
+    border-radius: 10px 0 0 10px;
+}

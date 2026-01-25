@@ -5,6 +5,7 @@ export interface Ciudadano {
     nombre: string;
     apellidos: string;
     telefono: string;
+    fechaNacimiento: Date;
     provincia: string;
     localidad: string;
     direccion: string;

@@ -1,7 +1,12 @@
 package com.sje.gestionCementerios.dto.request;
 
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -27,6 +32,10 @@ public class CiudadanoRequest {
 
     @NotBlank(message = "El teléfono es obligatorio")
     private String telefono;
+
+    @NotNull(message = "La fecha de nacimiento es obligatoria")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaNacimiento;
 
     @NotBlank(message = "La provincia es obligatoria")
     private String provincia;
