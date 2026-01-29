@@ -1,0 +1,118 @@
+.seccion-portada {
+    min-height: 85vh;
+    margin-top: -75px;
+    padding-top: 75px;
+    position: relative;
+    background-image: url("/banner.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto parallax opcional */
+}
+
+/* 2. La capa superpuesta ahora es el degradado VERDE con OPACIDAD */
+.overlay-fondo-verde {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Usamos rgba para el color primario con opacidad (0.9) y un tono más oscuro al final */
+    background: linear-gradient(135deg, rgba(var(--bs-primary-rgb), 0.5) 0%, rgba(0, 20, 20, 0.95) 100%);
+    z-index: 0;
+}
+
+.slogan {
+    font-weight: 300;
+}
+
+/* Ajuste para que el icono de info no se pegue al texto */
+.text-white-50 i {
+    font-size: 1.1rem;
+}
+
+/* Buscador Estilizado */
+.buscador-contenedor {
+    transition: transform 0.3s ease;
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+.buscador-contenedor input:focus {
+    box-shadow: none;
+}
+
+/* --- ANIMACIONES DE ENTRADA --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-up {
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+
+/* --- CONTADORES Y CARDS --- */
+.borde-primario-suave {
+    border-left: 5px solid var(--color-primario);
+}
+
+/* Reutilización de tu custom-card con mejoras */
+.custom-card {
+    /* Hereda lo que definiste en styles.scss, añadimos comportamiento */
+    transition: all 0.4s ease;
+    
+    &.tarjeta-rol:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+    }
+}
+
+.icono-contenedor {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- SECCIÓN AYUNTAMIENTOS --- */
+.circulo-decorativo {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    z-index: 0;
+}
+
+.circulo-decorativo.uno {
+    width: 300px; height: 300px;
+    top: -50px; left: -50px;
+}
+
+.circulo-decorativo.dos {
+    width: 500px; height: 500px;
+    bottom: -100px; right: -100px;
+}
+
+.hover-scale {
+    transition: transform 0.2s;
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.custom-card {
+    border: none;
+    border-top: 5px solid var(--color-secundario);
+    border-radius: 20px;
+}
+
+.custom-card .table-responsive {
+    border-radius: 20px;
+    text-align: center;
+}

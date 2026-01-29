@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { RouterLink, RouterOutlet } from "@angular/router";
-import { Auth } from './services/auth/auth';
+import { RouterOutlet } from "@angular/router";
+import { Footer } from './pages/footer/footer';
+import { Header } from './pages/header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, Header, Footer],
   standalone: true,
   templateUrl: './app.html',
   styleUrl: './app.scss'
@@ -12,10 +13,5 @@ import { Auth } from './services/auth/auth';
 export class App {
   protected readonly title = signal('FRONTEND');
 
-  constructor(public auth: Auth) {
-  }
-
-  logout() {
-    this.auth.logout();
-  }
+  
 }

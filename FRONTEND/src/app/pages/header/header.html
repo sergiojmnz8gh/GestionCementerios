@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar shadow">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center fw-bold" routerLink="/landing">
+            <img src="logo.png" alt="Gecen" height="60" class="me-2">
+            <span class="text-secondary fs-1">GECEN</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+            <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <div class="navbar-nav ms-auto align-items-center">
+
+                @if (auth.rol() != '') {
+                @if (auth.rol() == 'CIUDADANO' || auth.rol()=='AYUNTAMIENTO') {
+                <div class="dropdown">
+                    <button class="btn-profile btn-secundario dropdown-toggle d-flex align-items-center" type="button"
+                        data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle text-white fs-4"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end animate slideIn">
+                        <li>
+                            <h6 class="dropdown-header">Gestión del {{ auth.rol() }}</h6>
+                        </li>
+                        <li><a class="dropdown-item" routerLink="/dashboard"><i class="bi bi-speedometer2 me-2"></i>Mi
+                                Panel</a></li>
+                        <li><a class="dropdown-item" routerLink="/perfil"><i class="bi bi-person me-2"></i>Editar
+                                Perfil</a></li>
+
+                        @if (auth.rol() == 'AYUNTAMIENTO') {
+                        <li><a class="dropdown-item" routerLink="/ayuntamiento/cementerios"><i
+                                    class="bi bi-file-earmark-text me-2"></i>Mis Cementerios</a></li>
+                        }
+                        @if (auth.rol() == 'CIUDADANO') {
+                        <li><a class="dropdown-item" routerLink="/ciudadano/concesiones"><i
+                                    class="bi bi-file-earmark-text me-2"></i>Mis Concesiones</a></li>
+                        }
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <button class="dropdown-item text-acento fw-bold" (click)="logout()">
+                                <i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                }
+                } @else {
+                <a class="nav-link btn-login px-4 py-2 mt-2 mt-lg-0 fw-bold" routerLink="/login">
+                    <i class="bi bi-person-circle me-2"></i>Acceder
+                </a>
+                }
+
+            </div>
+        </div>
+    </div>
+</nav>

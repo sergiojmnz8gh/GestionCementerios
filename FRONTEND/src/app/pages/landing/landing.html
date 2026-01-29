@@ -1,1 +1,198 @@
-<p>landing works!</p>
+<header class="seccion-portada d-flex align-items-center position-relative">
+    <div class="overlay-fondo-verde"></div>
+
+    <div class="container position-relative z-1 text-center text-white">
+        <h1 class="display-3 fw-bold mb-3 animate-up">Plataforma Nacional para la <br> Gestión de Cementerios</h1>
+        <div class="mb-5 animate-up delay-1">
+            <p class="fs-3 mb-2 slogan">Vínculo de innovación digital con el recuerdo</p>
+        </div>
+
+        <div class="row justify-content-center animate-up delay-2">
+            <div class="col-md-8 col-lg-7">
+                <p class="text-white mb-3 fs-6 fw-light d-flex justify-content-center align-items-center gap-2">
+                    <i class="bi bi-info-circle"></i>
+                    <span>Consulta la ubicación exacta de tus seres queridos mediante el buscador de difuntos.</span>
+                </p>
+
+                <div class="card p-2 border-0 shadow-lg rounded-pill buscador-contenedor">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-0 ps-3">
+                            <i class="bi bi-search text-primary fs-4"></i>
+                        </span>
+                        <input type="text" class="form-control border-0 fs-5 ps-2"
+                            placeholder="Buscar difunto por nombre y apellidos..." [(ngModel)]="busquedaDifunto"
+                            (keyup.enter)="buscarDifunto()">
+                        <button class="btn btn-secundario rounded-pill px-4 fw-bold" (click)="buscarDifunto()">
+                            BUSCAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="py-5 bg-white position-relative">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-md-3 text-center text-md-start">
+                <div class="d-inline-flex align-items-center p-4 rounded-4 bg-light shadow-sm borde-primario-suave">
+                    <i class="bi bi-bank fs-1 text-primary me-4"></i>
+                    <div>
+                        <h2 class="display-4 fw-bold text-secondary mb-0">
+                            {{ totalCementerios }}
+                        </h2>
+                        <p class="text-muted mb-0 fs-5">Cementerios <br> Gestionados</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="card custom-card shadow p-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary fw-bold mb-3">
+                            <i class="bi bi-geo-alt-fill me-2"></i>Encuentra tu Cementerio
+                        </h4>
+                        <p class="text-muted small mb-3">Acceder para ver mapas, nichos disponibles y adquirir
+                            concesiones.</p>
+
+                        <div [formGroup]="form" class="row g-3">
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label fw-semibold">Provincia</label>
+                                <select class="form-select custom-input" formControlName="provincia"
+                                    (change)="onProvinciaChange()">
+                                    <option value="">-- Seleccione --</option>
+                                    @for (p of provincias; track p.CPRO) {
+                                    <option [value]="p.CPRO">{{ p.PRO }}</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label fw-semibold">Localidad</label>
+                                <select class="form-select custom-input" formControlName="localidad"
+                                    [disabled]="localidades.length == 0">
+                                    <option value="">-- Seleccione --</option>
+                                    @for (l of localidades; track l.CMUN) {
+                                    <option [value]="l.DMUN50">{{ l.DMUN50 }}</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-md-5 mb-3">
+                                <label class="form-label fw-semibold">Cementerio</label>
+                                <select class="form-select custom-input" formControlName="cementerio">
+                                    <option value="">-- Seleccione --</option>
+                                    @for (c of cementerios; track c.id) {
+                                    <option [value]="c.nombre">{{ c.nombre }}</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-secundario fw-bold" (click)="irACementerio()">
+                                VER CEMENTERIO
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 seccion-roles">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-primary">¿Cómo funciona GECEN?</h2>
+            <p class="text-muted p-2">Una plataforma unificada para Ciudadanos y Ayuntamientos</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-5 col-lg-4">
+                <div class="card h-100 shadow custom-card tarjeta-rol">
+                    <div class="card-body text-center p-4">
+                        <div class="icono-contenedor mb-4 bg-light text-primary mx-auto">
+                            <i class="bi bi-person-heart fs-1"></i>
+                        </div>
+                        <h3 class="fw-bold mb-3">Ciudadanos</h3>
+                        <ul class="text-start list-unstyled text-muted mb-4">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-secondary me-2"></i>Consulta la
+                                ubicación de tus seres queridos.</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-secondary me-2"></i>Adquiere y gestiona tus
+                                concesiones.</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-secondary me-2"></i>Realiza trámites
+                                online sin esperas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5 col-lg-4">
+                <div class="card h-100 shadow custom-card tarjeta-rol">
+                    <div class="card-body text-center p-4">
+                        <div class="icono-contenedor mb-4 bg-light text-secondary mx-auto">
+                            <i class="bi bi-bank fs-1"></i>
+                        </div>
+                        <h3 class="fw-bold mb-3">Ayuntamientos</h3>
+                        <ul class="text-start list-unstyled text-muted mb-4">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Digitaliza la
+                                gestión de tus cementerios.</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Control total de
+                                servicios y pagos.</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Reduce la
+                                burocracia administrativa.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="seccion-ayuntamientos" class="py-5 bg-primary text-white position-relative overflow-hidden">
+    <div class="circulo-decorativo uno"></div>
+    <div class="circulo-decorativo dos"></div>
+
+    <div class="container position-relative z-1">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <h2 class="display-6 fw-bold mb-3">¿Eres un Ayuntamiento?</h2>
+                <p class="fs-5 mb-4">
+                    Únete a nuestra plataforma nacional de cementerios digitales. Moderniza tus servicios y ofrece una mejor
+                    experiencia a tus ciudadanos.
+                </p>
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-lg p-4 text-dark" style="border-radius: 20px;">
+                    <h4 class="fw-bold text-primary mb-3">Solicitar Adhesión</h4>
+                    <div [formGroup]="form2" class="row g-3">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Provincia</label>
+                                <select class="form-select custom-input" formControlName="provincia"
+                                    (change)="onProvinciaChange()">
+                                    <option value="">-- Seleccione --</option>
+                                    @for (p of provincias; track p.CPRO) {
+                                    <option [value]="p.CPRO">{{ p.PRO }}</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Localidad</label>
+                                <select class="form-select custom-input" formControlName="localidad"
+                                    [disabled]="localidades.length == 0">
+                                    <option value="">-- Seleccione --</option>
+                                    @for (l of localidades; track l.CMUN) {
+                                    <option [value]="l.DMUN50">{{ l.DMUN50 }}</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
