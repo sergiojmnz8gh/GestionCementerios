@@ -29,4 +29,21 @@ public class AyuntamientoService {
             .map(ayuntamientoMapper::toResponseDTO)
             .orElseThrow();
     }
+
+    public AyuntamientoResponse actualizar(Integer id, AyuntamientoResponse ayuntamiento) {
+        return ayuntamientoRepository.findById(id)
+            .map(existente -> {
+                existente.getUsuario().setEmail(ayuntamiento.getEmail());
+                existente.setLogoUrl(ayuntamiento.getLogoUrl());
+                existente.setProvincia(ayuntamiento.getProvincia());
+                existente.setLocalidad(ayuntamiento.getLocalidad());
+                return ayuntamientoRepository.save(existente);
+            })
+            .map(ayuntamientoMapper::toResponseDTO)
+            .orElseThrow();
+    }
+
+    public void eliminar(Integer id) {
+        ayuntamientoRepository.deleteById(id);
+    }
 }

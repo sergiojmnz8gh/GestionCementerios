@@ -18,7 +18,4 @@ public class AyuntamientoRequest {
 
     @NotBlank(message = "La contraseña es obligatoria")
     private String password;
-
-    @NotBlank(message = "El archivo de configuración es obligatorio")
-    private String config;
 }

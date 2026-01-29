@@ -23,7 +23,7 @@ export class RegistroCiudadano implements OnInit {
       nombre: new FormControl('', [Validators.required]),
       apellidos: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      confirmarPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      repetirPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
       telefono: new FormControl('', [Validators.required]),
       fechaNacimiento: new FormControl('', [Validators.required, validadores.fechaEsAnterior(new Date())]),
       provincia: new FormControl('', [Validators.required]),

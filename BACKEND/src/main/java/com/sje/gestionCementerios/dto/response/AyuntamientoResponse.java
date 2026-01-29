@@ -8,6 +8,5 @@ public class AyuntamientoResponse {
     private String email;
     private String localidad;
     private String provincia;
-    private String config;
     private String logoUrl;
 }

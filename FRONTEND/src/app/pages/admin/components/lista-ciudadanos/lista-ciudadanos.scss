@@ -1,25 +1,83 @@
-/* Color de contraste para botones de edición en tabla */
-.btn-outline-warning-custom {
-    color: #856404;
-    border-color: #ffc107;
-}
-
-.btn-outline-warning-custom:hover {
-    background-color: #ffc107;
-    color: black;
-}
-
-/* Ajustes para el Modal */
 .modal-backdrop {
     background-color: var(--color-primario);
-    opacity: 0.6 !important; /* El fondo del modal tendrá un tinte verde azulado */
+    opacity: 0.5;
 }
 
-/* Transición suave para el buscador */
-.custom-search .custom-input {
-    border-radius: 0 10px 10px 0;
+.custom-input:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 0.1rem rgba(0, 85, 85, 0.8);
 }
 
-.custom-search .input-group-text {
-    border-radius: 10px 0 0 10px;
+.custom-card {
+    border: none;
+    border-top: 5px solid var(--color-secundario);
+    border-radius: 20px;
+}
+
+.custom-card .table-responsive {
+    border-radius: 20px;
+    text-align: center;
+}
+
+.custom-tr {
+    transition: all 0.4s ease;
+    border-left: 4px solid transparent;
+}
+
+.custom-tr:hover {
+    background-color: black;
+    border-left: 4px solid var(--color-secundario);
+}
+
+.btn-outline-primario {
+    color: var(--color-primario);
+    border-color: var(--color-primario);
+}
+.btn-outline-primario:hover {
+    background-color: var(--color-primario);
+    color: white;
+}
+
+.btn-outline-secundario {
+    color: var(--color-secundario);
+    border-color: var(--color-secundario);
+}
+.btn-outline-secundario:hover {
+    background-color: var(--color-secundario);
+    color: white;
+}
+
+.text-primario {
+    color: var(--color-primario);
+}
+
+.spinner-border.text-primario {
+    color: var(--color-primario);
+}
+
+.btn-secundario {
+    background-color: var(--color-secundario);
+    color: var(--color-fondo);
+    border: 2px solid var(--color-fondo);
+    border-radius: 10px;
+    transition: all 0.4s ease;
+}
+
+.btn-secundario:hover {
+    background-color: var(--color-secundario);
+    border-color: var(--color-secundario);
+    color: var(--color-fondo);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.link-primario {
+    color: var(--color-secundario);
+    transition: all 0.4s ease;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.link-primario:hover {
+    color: var(--color-primario);
 }

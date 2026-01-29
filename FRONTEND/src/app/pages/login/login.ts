@@ -19,8 +19,8 @@ export class Login {
     const credenciales = { email: this.email, password: this.password };
 
     this.usuario.login(credenciales).subscribe({
-      next: (res) => {
-        console.log("Login exitoso", res);
+      next: () => {
+        this.usuario.redireccionarPorRol();
       },
       error: (err) => {
         console.error("Error en el login", err);

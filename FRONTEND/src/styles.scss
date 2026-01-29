@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap');
 
 :root {
-    --color-primario: #005555;
+    --color-primario: #004444;
     --color-secundario: #660000;
     --color-fondo: #f8f8f8;
     --color-texto: #080808;
@@ -11,9 +11,38 @@ body {
     font-family: 'Zalando Sans', sans-serif;
     background-color: var(--color-fondo);
     color: var(--color-texto);
-    padding-top: 50px;
+    padding-top: 75px;
     --bs-primary: var(--color-primario);
-    --bs-primary-rgb: 0, 85, 85;
+    --bs-primary-rgb: 0, 68, 68;
     --bs-secondary: var(--color-secundario);
     --bs-secondary-rgb: 102, 0, 0;
+
+    //Modales
+    .custom-input:focus {
+        border-color: var(--color-primario);
+        box-shadow: 0 0 0 0.1rem rgba(0, 85, 85, 0.8);
+    }
+
+    .btn-secundario {
+        background-color: var(--color-secundario);
+        color: var(--color-fondo);
+        border: 2px solid var(--color-fondo);
+        border-radius: 10px;
+        transition: all 0.4s ease;
+
+        &:hover {
+            background-color: var(--color-secundario);
+            border-color: var(--color-secundario);
+            color: var(--color-fondo);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+    }
+
+    .btn:disabled {
+        background-color: #cccccc;
+        color: var(--color-texto);
+        cursor: not-allowed;
+        pointer-events: all; 
+    }
 }

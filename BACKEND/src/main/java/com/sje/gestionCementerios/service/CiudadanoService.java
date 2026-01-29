@@ -30,9 +30,20 @@ public class CiudadanoService {
         .orElseThrow();
     }
 
-    public CiudadanoResponse actualizar(CiudadanoResponse ciudadano) {
-        return ciudadanoRepository.findById(ciudadano.getId())
-            .map(ciudadanoRepository::save)
+    public CiudadanoResponse actualizar(Integer id, CiudadanoResponse ciudadano) {
+        return ciudadanoRepository.findById(id)
+            .map(existente -> {
+                existente.getUsuario().setEmail(ciudadano.getEmail());
+                existente.setDni(ciudadano.getDni());
+                existente.setNombre(ciudadano.getNombre());
+                existente.setApellidos(ciudadano.getApellidos());
+                existente.setTelefono(ciudadano.getTelefono());
+                existente.setFechaNacimiento(ciudadano.getFechaNacimiento());
+                existente.setProvincia(ciudadano.getProvincia());
+                existente.setLocalidad(ciudadano.getLocalidad());
+                existente.setDireccion(ciudadano.getDireccion());
+                return ciudadanoRepository.save(existente);
+            })
             .map(ciudadanoMapper::toResponseDTO)
             .orElseThrow();
     }

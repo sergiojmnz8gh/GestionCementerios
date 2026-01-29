@@ -8,7 +8,8 @@ import { validadores } from '../../../../validadores';
 @Component({
   selector: 'app-form-ciudadano',
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './form-ciudadano.html'
+  templateUrl: './form-ciudadano.html',
+  styleUrl: './form-ciudadano.scss'
 })
 export class FormCiudadano implements OnInit {
   @Input() ciudadanoParaEditar: Ciudadano | null = null;

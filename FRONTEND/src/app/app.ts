@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from "@angular/router";
+import { Auth } from './services/auth/auth';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,11 @@ import { RouterLink, RouterOutlet } from "@angular/router";
 })
 export class App {
   protected readonly title = signal('FRONTEND');
+
+  constructor(public auth: Auth) {
+  }
+
+  logout() {
+    this.auth.logout();
+  }
 }

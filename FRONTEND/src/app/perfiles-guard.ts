@@ -1,10 +1,20 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { Auth } from './services/auth/auth';
 
-export const perfilesGuard: CanActivateFn = (route, state) => {
+export const perfilesGuard: CanActivateFn = (route) => {
   const router = inject(Router);
   const token = localStorage.getItem('token');
+  const auth = inject(Auth);
+
+  if (route.data['roles'].includes('INVITADO')) {
+    if (token) {
+      auth.redireccionarPorRol();
+      return false;
+    }
+    return true;
+  }
 
   if (!token) {
     router.navigate(['/login']);

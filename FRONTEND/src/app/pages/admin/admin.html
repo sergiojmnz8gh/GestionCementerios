@@ -3,43 +3,71 @@
     <aside class="sidebar shadow">
         <div class="sidebar-header">
             <i class="bi bi-shield-lock-fill fs-3 text-white"></i>
-            <h4 class="mb-0 fw-bold">PANEL GCN</h4>
+            <h4 class="mb-0 fw-bold">ADMINISTRACIÓN</h4>
         </div>
         
         <nav class="nav nav-pills flex-column px-3 mt-4">
-            <button class="nav-link mb-3 sidebar-item" 
+            <button class="nav-link mb-2 sidebar-item" 
                     [class.active]="vista == 'ciudadanos'"
                     (click)="vista = 'ciudadanos'">
-                <i class="bi bi-people-fill me-3"></i> Gestión Ciudadanos
+                <i class="bi bi-people-fill me-3"></i> Ciudadanos
             </button>
 
-            <button class="nav-link mb-3 sidebar-item" 
+            <button class="nav-link mb-2 sidebar-item" 
                     [class.active]="vista == 'ayuntamientos'"
                     (click)="vista = 'ayuntamientos'">
-                <i class="bi bi-building me-3"></i> Ayuntamientos
+                <i class="bi bi-bank me-3"></i> Ayuntamientos
+            </button>
+
+            <button class="nav-link mb-2 sidebar-item" 
+                    [class.active]="vista == 'cementerios'"
+                    (click)="vista = 'cementerios'">
+                <i class="bi bi-file-earmark-text me-3"></i> Cementerios
+            </button>
+
+            <button class="nav-link mb-2 sidebar-item" 
+                    [class.active]="vista == 'concesiones'"
+                    (click)="vista = 'concesiones'">
+                <i class="bi bi-file-earmark-plus me-3"></i> Concesiones
+            </button>
+
+            <button class="nav-link mb-2 sidebar-item" 
+                    [class.active]="vista == 'pagos'"
+                    (click)="vista = 'pagos'">
+                <i class="bi bi-cash me-3"></i> Pagos
+            </button>
+
+            <button class="nav-link mb-2 sidebar-item" 
+                    [class.active]="vista == 'servicios'"
+                    (click)="vista = 'servicios'">
+                <i class="bi bi-box me-3"></i> Servicios
+            </button>
+
+            <button class="nav-link mb-2 sidebar-item" 
+                    [class.active]="vista == 'difuntos'"
+                    (click)="vista = 'difuntos'">
+                <i class="bi bi-person-fill me-3"></i> Difuntos
             </button>
         </nav>
         
         <div class="sidebar-footer px-3">
-            <hr class="text-white-50">
-            <button class="btn btn-logout w-100 py-2">
-                <i class="bi bi-box-arrow-left me-2"></i> Salir del Sistema
+            <hr class="text-white">
+            <button class="btn btn-secundario w-100" (click)="logout()">
+                <i class="bi bi-box-arrow-left me-2"></i> Cerrar Sesión
             </button>
         </div>
     </aside>
 
-    <main class="content-area p-4">
+    <main class="content-area p-5">
         
-        <header class="content-header mb-4 shadow-sm">
+        <header class="content-header shadow-sm">
             <div class="d-flex align-items-center">
                 <div class="view-indicator me-3"></div>
-                <h2 class="h4 mb-0 fw-bold text-uppercase">
+                <h4 class="mb-0 fw-bold text-uppercase">
                     {{ vista }}
-                </h2>
+                </h4>
             </div>
             <div class="d-flex align-items-center">
-                <span class="me-3 text-muted d-none d-md-block">Sesión: <strong>Admin</strong></span>
-                <span class="badge badge-admin px-3 py-2">MODO ADMINISTRACIÓN</span>
             </div>
         </header>
 
@@ -48,7 +76,17 @@
                 <app-lista-ciudadanos></app-lista-ciudadanos>
             } @else if (vista == 'ayuntamientos') {
                 <app-lista-ayuntamientos></app-lista-ayuntamientos>
-            }   
+            } @else if (vista == 'cementerios') {
+                <app-lista-cementerios></app-lista-cementerios>
+            } @else if (vista == 'concesiones') {
+                <app-lista-concesiones></app-lista-concesiones>
+            } @else if (vista == 'pagos') {
+                <app-lista-pagos></app-lista-pagos>
+            } @else if (vista == 'servicios') {
+                <app-lista-servicios></app-lista-servicios>
+            } @else if (vista == 'difuntos') {
+                <app-lista-difuntos></app-lista-difuntos>
+            }
         </div>
     </main>
 </div>

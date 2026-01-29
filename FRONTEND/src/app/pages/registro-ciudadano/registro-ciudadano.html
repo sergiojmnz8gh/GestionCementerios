@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-center align-items-center min-vh-100 py-5">
-    <div class="card shadow-lg custom-login-card" style="max-width: 800px; width: 100%;">
+    <div class="card shadow-lg custom-card" style="max-width: 800px; width: 100%;">
         <div class="card-body p-4 p-md-5">
             <div class="text-center mb-4">
                 <i class="bi bi-person-plus-fill fs-1 text-primary"></i>
@@ -10,11 +10,11 @@
                 <div class="row">
                     <div class="col-md-8 mb-3">
                         <label class="form-label fw-semibold">Email</label>
-                        <input type="email" class="form-control custom-input" formControlName="email" placeholder="correo@ejemplo.com">
+                        <input type="email" class="form-control custom-input" formControlName="email">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label class="form-label fw-semibold">DNI</label>
-                        <input type="text" class="form-control custom-input" formControlName="dni" placeholder="12345678X">
+                        <input type="text" class="form-control custom-input" formControlName="dni">
                     </div>
 
                     <div class="col-md-5 mb-3">
@@ -26,20 +26,20 @@
                         <input type="text" class="form-control custom-input" formControlName="apellidos">
                     </div>
 
-                    <div class="col-md-8 mb-3">
+                    <div class="col-md-7 mb-3">
                         <label class="form-label fw-semibold">Contraseña</label>
                         <input type="password" class="form-control custom-input" formControlName="password">
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-4 mb-3 ms-auto">
                         <label class="form-label fw-semibold">Teléfono</label>
                         <input type="text" class="form-control custom-input" formControlName="telefono">
                     </div>
 
-                    <div class="col-md-8 mb-3">
-                        <label class="form-label fw-semibold">Confirmar Contraseña</label>
-                        <input type="password" class="form-control custom-input" formControlName="confirmarPassword">
+                    <div class="col-md-7 mb-3">
+                        <label class="form-label fw-semibold">Repetir Contraseña</label>
+                        <input type="password" class="form-control custom-input" formControlName="repetirPassword">
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-4 mb-3 ms-auto">
                         <label class="form-label fw-semibold">Fecha de Nacimiento</label>
                         <input type="date" class="form-control custom-input" formControlName="fechaNacimiento">
                     </div>
@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="d-grid gap-2 mt-4">
-                    <button type="submit" class="btn btn-login-submit btn-lg py-2" [disabled]="registroForm.invalid">
+                    <button type="submit" class="btn btn-secundario btn-lg py-2" [disabled]="registroForm.invalid">
                         Registrar
                     </button>
                     <a routerLink="/login" class="btn btn-link link-primario mt-2">¿Ya tienes cuenta? Inicia sesión</a>

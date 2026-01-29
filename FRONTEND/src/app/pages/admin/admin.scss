@@ -1,45 +1,43 @@
-/* Layout Principal */
 .admin-layout {
     background-color: var(--color-fondo);
 }
 
-/* Sidebar Estilizado */
 .sidebar {
-    width: 280px;
+    width: 275px;
     background-color: var(--color-primario);
-    min-height: 100vh;
+    min-height: calc(100vh - 75px);
     position: fixed;
+    left: 0;
     display: flex;
     flex-direction: column;
     z-index: 1000;
 }
 
 .sidebar-header {
-    padding: 2rem 1.5rem;
+    padding: 1rem;
     text-align: center;
     color: white;
-    border-bottom: 4px solid var(--color-secundario); /* Tu granate */
+    border-bottom: 4px solid var(--color-fondo);
 }
 
-/* Ítems del Menú */
 .sidebar-item {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: rgba(255, 255, 255, 0.8);
     background: transparent;
     border: none;
     text-align: left;
-    padding: 0.8rem 1.2rem;
-    transition: all 0.3s ease;
+    padding: 0.7rem;
+    transition: all 0.4s ease;
     border-radius: 8px;
 }
 
 .sidebar-item:hover {
     background: rgba(255, 255, 255, 0.1);
-    color: white !important;
+    color: white;
 }
 
 .sidebar-item.active {
-    background-color: var(--color-secundario) !important; /* Granate para el activo */
-    color: white !important;
+    background-color: var(--color-secundario);
+    color: white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     font-weight: 600;
 }
@@ -49,20 +47,22 @@
     padding-bottom: 2rem;
 }
 
-/* Botón de Salir */
-.btn-logout {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    transition: background 0.3s;
+.btn-secundario {
+    background-color: var(--color-secundario);
+    color: var(--color-fondo);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: all 0.4s ease;
 }
 
-.btn-logout:hover {
-    background: #800000; /* Granate más vivo para peligro */
-    border-color: transparent;
+.btn-secundario:hover {
+    background-color: var(--color-secundario);
+    border-color: var(--color-secundario);
+    color: var(--color-fondo);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Área de Contenido */
 .content-area {
     margin-left: 280px;
     width: calc(100% - 280px);
@@ -91,12 +91,11 @@
     letter-spacing: 1px;
 }
 
-/* Animación sutil al cambiar de vista */
 .view-container {
-    animation: fadeIn 0.5s;
+    animation: fadeIn 1s;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(100px); }
     to { opacity: 1; transform: translateY(0); }
 }

@@ -1,0 +1,72 @@
+<div class="modal-content border-0 shadow-lg">
+    <div class="modal-header text-white"
+        style="background-color: var(--color-secundario); border-bottom: 4px solid var(--color-primario);">
+        <h5 class="modal-title fw-bold">
+            <i class="bi me-2" [class.bi-person-plus]="!ayuntamientoParaEditar"
+                [class.bi-pencil]="ayuntamientoParaEditar"></i>
+            {{ ayuntamientoParaEditar ? 'Editar Ayuntamiento' : 'Nuevo Ayuntamiento' }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" (click)="cerrar.emit()"></button>
+    </div>
+
+    <form [formGroup]="registroForm" (ngSubmit)="enviar()">
+        <div class="modal-body p-4">
+            <div class="row g-3">
+                <div class="col-md-7">
+                    <label class="form-label fw-bold">Email</label>
+                    <input type="email" formControlName="email" class="form-control custom-input">
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label fw-bold text-verde">Logo</label>
+                    <div class="d-flex align-items-center gap-3">
+                        <div
+                            class="logo-preview shadow-sm border d-flex align-items-center justify-content-center bg-light">
+                            @if (logo()) {
+                            <img [src]="logo()" alt="Logo preview" class="img-fluid">
+                            } @else {
+                            <i class="bi bi-image text-muted fs-2"></i>
+                            }
+                        </div>
+
+                        <div class="flex-grow-1">
+                            <input type="file" #fileInput formControlName="logo" class="form-control d-none" (change)="fotoSubida($event)" accept="image/*">
+                            <button type="button" class="btn btn-primario w-100" (click)="fileInput.click()">
+                                <i class="bi bi-upload me-2"></i>Seleccionar Imagen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Provincia</label>
+                    <select formControlName="provincia" class="form-select custom-input" (change)="onProvinciaChange()">
+                        <option value="">Seleccione provincia...</option>
+                        @for (p of provincias; track p.CPRO) {
+                        <option [value]="p.CPRO">{{ p.PRO }}</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Localidad</label>
+                    <select formControlName="localidad" class="form-select custom-input">
+                        <option value="">Seleccione localidad...</option>
+                        @for (l of localidades; track l.DMUN50) {
+                        <option [value]="l.DMUN50">{{ l.DMUN50 }}</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer bg-light border-0">
+            <button type="button" class="btn btn-secundario px-4" (click)="cerrar.emit()">
+                <i class="bi bi-x-lg me-1"></i>
+                Cancelar
+            </button>
+            <button type="submit" class="btn btn-secundario px-4" [disabled]="registroForm.invalid">
+                <i class="bi bi-check-lg me-1"></i>
+                {{ ayuntamientoParaEditar ? 'Actualizar' : 'Registrar' }}
+            </button>
+        </div>
+    </form>
+</div>

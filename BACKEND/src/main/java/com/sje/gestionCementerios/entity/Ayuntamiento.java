@@ -32,9 +32,6 @@ public class Ayuntamiento {
     @Column(nullable = false, length = 100)
     private String provincia;
 
-    @Column(nullable = false)
-    private String config;
-
     @Column(name = "logo_url")
     private String logoUrl;
 
@@ -48,7 +45,6 @@ public class Ayuntamiento {
     public Ayuntamiento(String localidad, String provincia) {
         this.localidad = localidad;
         this.provincia = provincia;
-        this.config = null;
         this.logoUrl = null;
         this.cementerios = null;
     }

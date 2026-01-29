@@ -1,8 +1,8 @@
 <div class="modal-content border-0 shadow-lg">
-    <div class="modal-header text-white" style="background-color: var(--color-primario); border-bottom: 4px solid var(--color-secundario);">
+    <div class="modal-header text-white" style="background-color: var(--color-secundario); border-bottom: 4px solid var(--color-primario);">
         <h5 class="modal-title fw-bold">
             <i class="bi me-2" [class.bi-person-plus]="!ciudadanoParaEditar" [class.bi-pencil]="ciudadanoParaEditar"></i>
-            {{ ciudadanoParaEditar ? 'Editar Ciudadano' : 'Registrar Nuevo Ciudadano' }}
+            {{ ciudadanoParaEditar ? 'Editar Ciudadano' : 'Nuevo Ciudadano' }}
         </h5>
         <button type="button" class="btn-close btn-close-white" (click)="cerrar.emit()"></button>
     </div>
@@ -10,21 +10,21 @@
     <form [formGroup]="registroForm" (ngSubmit)="enviar()">
         <div class="modal-body p-4">
             <div class="row g-3">
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <label class="form-label fw-bold">Email</label>
-                    <input type="email" formControlName="email" class="form-control custom-input" placeholder="correo@gcn.es">
+                    <input type="email" formControlName="email" class="form-control custom-input">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label class="form-label fw-bold">DNI</label>
                     <input type="text" formControlName="dni" class="form-control custom-input"
-                        (input)="registroForm.get('dni')?.setValue($any($event.target).value.toUpperCase())" placeholder="00000000X">
+                        (input)="registroForm.get('dni')?.setValue($any($event.target).value.toUpperCase())">
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <label class="form-label fw-bold">Nombre</label>
                     <input type="text" formControlName="nombre" class="form-control custom-input">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <label class="form-label fw-bold">Apellidos</label>
                     <input type="text" formControlName="apellidos" class="form-control custom-input">
                 </div>
@@ -65,12 +65,13 @@
         </div>
 
         <div class="modal-footer bg-light border-0">
-            <button type="button" class="btn btn-outline-secondary px-4" (click)="cerrar.emit()">
+            <button type="button" class="btn btn-secundario px-4" (click)="cerrar.emit()">
+                <i class="bi bi-x-lg me-1"></i>
                 Cancelar
             </button>
-            <button type="submit" class="btn btn-login-submit px-5" [disabled]="registroForm.invalid">
+            <button type="submit" class="btn btn-secundario px-4" [disabled]="registroForm.invalid">
                 <i class="bi bi-check-lg me-1"></i>
-                {{ ciudadanoParaEditar ? 'Actualizar' : 'Guardar Datos' }}
+                {{ ciudadanoParaEditar ? 'Actualizar' : 'Registrar' }}
             </button>
         </div>
     </form>
