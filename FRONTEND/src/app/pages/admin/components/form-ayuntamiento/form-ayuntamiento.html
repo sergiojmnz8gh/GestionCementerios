@@ -2,8 +2,7 @@
     <div class="modal-header text-white"
         style="background-color: var(--color-secundario); border-bottom: 4px solid var(--color-primario);">
         <h5 class="modal-title fw-bold">
-            <i class="bi me-2" [class.bi-person-plus]="!ayuntamientoParaEditar"
-                [class.bi-pencil]="ayuntamientoParaEditar"></i>
+            <i class="bi me-2" [class.bi-plus]="!ayuntamientoParaEditar" [class.bi-pencil]="ayuntamientoParaEditar"></i>
             {{ ayuntamientoParaEditar ? 'Editar Ayuntamiento' : 'Nuevo Ayuntamiento' }}
         </h5>
         <button type="button" class="btn-close btn-close-white" (click)="cerrar.emit()"></button>
@@ -29,7 +28,8 @@
                         </div>
 
                         <div class="flex-grow-1">
-                            <input type="file" #fileInput formControlName="logo" class="form-control d-none" (change)="fotoSubida($event)" accept="image/*">
+                            <input type="file" #fileInput formControlName="logo" class="form-control d-none"
+                                (change)="fotoSubida($event)" accept="image/*">
                             <button type="button" class="btn btn-primario w-100" (click)="fileInput.click()">
                                 <i class="bi bi-upload me-2"></i>Seleccionar Imagen
                             </button>

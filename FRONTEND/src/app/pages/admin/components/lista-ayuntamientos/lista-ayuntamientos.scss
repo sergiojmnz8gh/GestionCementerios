@@ -1,58 +1,62 @@
+// 1. Modal y Spinners
 .modal-backdrop {
     background-color: var(--color-primario);
     opacity: 0.5;
 }
 
-.custom-input:focus {
-    border-color: var(--color-primario);
-    box-shadow: 0 0 0 0.1rem rgba(0, 85, 85, 0.8);
+.spinner-border.text-primario {
+    color: var(--color-primario);
 }
 
+// 2. Card personalizada
 .custom-card {
     border: none;
     border-top: 5px solid var(--color-secundario);
     border-radius: 20px;
-}
 
-.custom-card .table-responsive {
-    border-radius: 20px;
-    text-align: center;
+    .table-responsive {
+        border-radius: 20px;
+        text-align: center;
+    }
 }
 
 .custom-tr {
     transition: all 0.4s ease;
     border-left: 4px solid transparent;
+
+    &:hover {
+        background-color: black;
+        border-left: 4px solid var(--color-secundario);
+    }
 }
 
-.custom-tr:hover {
-    background-color: black;
-    border-left: 4px solid var(--color-secundario);
+// 3. Entradas de Formulario
+.custom-input {
+    &:focus {
+        border-color: var(--color-primario);
+        box-shadow: 0 0 0 0.1rem rgba(0, 85, 85, 0.8);
+    }
 }
 
+// 4. Botones
 .btn-outline-primario {
     color: var(--color-primario);
     border-color: var(--color-primario);
-}
-.btn-outline-primario:hover {
-    background-color: var(--color-primario);
-    color: white;
+
+    &:hover {
+        background-color: var(--color-primario);
+        color: white;
+    }
 }
 
 .btn-outline-secundario {
     color: var(--color-secundario);
     border-color: var(--color-secundario);
-}
-.btn-outline-secundario:hover {
-    background-color: var(--color-secundario);
-    color: white;
-}
 
-.text-primario {
-    color: var(--color-primario);
-}
-
-.spinner-border.text-primario {
-    color: var(--color-primario);
+    &:hover {
+        background-color: var(--color-secundario);
+        color: white;
+    }
 }
 
 .btn-secundario {
@@ -61,14 +65,19 @@
     border: 2px solid var(--color-fondo);
     border-radius: 10px;
     transition: all 0.4s ease;
+
+    &:hover {
+        background-color: var(--color-secundario);
+        border-color: var(--color-secundario);
+        color: var(--color-fondo);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 }
 
-.btn-secundario:hover {
-    background-color: var(--color-secundario);
-    border-color: var(--color-secundario);
-    color: var(--color-fondo);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+// 5. Utilidades de Texto y Enlaces
+.text-primario {
+    color: var(--color-primario);
 }
 
 .link-primario {
@@ -76,8 +85,8 @@
     transition: all 0.4s ease;
     font-weight: 600;
     text-decoration: underline;
-}
 
-.link-primario:hover {
-    color: var(--color-primario);
+    &:hover {
+        color: var(--color-primario);
+    }
 }

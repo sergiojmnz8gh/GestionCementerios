@@ -1,5 +1,7 @@
+// 1. Importaciones
 @import url('https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap');
 
+// 2. Variables de colores
 :root {
     --color-primario: #004444;
     --color-secundario: #660000;
@@ -7,42 +9,20 @@
     --color-texto: #080808;
 }
 
+// 3. Estilos de Base
 body {
+    // Tipografía y Colores
     font-family: 'Zalando Sans', sans-serif;
-    background-color: var(--color-fondo);
     color: var(--color-texto);
-    padding-top: 75px;
+    background-color: var(--color-fondo);
+    
+    // Layout
+    padding-top: 95px;
+
+    // Sobrescritura de colores de Bootstrap
     --bs-primary: var(--color-primario);
-    --bs-primary-rgb: 0, 68, 68;
+    --bs-primary-rgb: #{red(#004444)}, #{green(#004444)}, #{blue(#004444)};
+    
     --bs-secondary: var(--color-secundario);
-    --bs-secondary-rgb: 102, 0, 0;
-
-    //Modales
-    .custom-input:focus {
-        border-color: var(--color-primario);
-        box-shadow: 0 0 0 0.1rem rgba(0, 85, 85, 0.8);
-    }
-
-    .btn-secundario {
-        background-color: var(--color-secundario);
-        color: var(--color-fondo);
-        border: 2px solid var(--color-fondo);
-        border-radius: 10px;
-        transition: all 0.4s ease;
-
-        &:hover {
-            background-color: var(--color-secundario);
-            border-color: var(--color-secundario);
-            color: var(--color-fondo);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-    }
-
-    .btn:disabled {
-        background-color: #cccccc;
-        color: var(--color-texto);
-        cursor: not-allowed;
-        pointer-events: all; 
-    }
+    --bs-secondary-rgb: #{red(#660000)}, #{green(#660000)}, #{blue(#660000)};
 }

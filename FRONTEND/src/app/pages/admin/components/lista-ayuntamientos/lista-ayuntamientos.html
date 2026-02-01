@@ -5,9 +5,7 @@
                 <span class="input-group-text bg-white border-end-0">
                     <i class="bi bi-search text-primario"></i>
                 </span>
-                <input type="text"
-                    class="form-control border-start-0 ps-0 custom-input"
-                    placeholder="Buscar..."
+                <input type="text" class="form-control border-start-0 ps-0 custom-input" placeholder="Buscar..."
                     [(ngModel)]="buscando">
             </div>
         </div>
@@ -35,8 +33,7 @@
                     <tr class="custom-tr">
                         <td class="text-primary fw-bold">#{{ a.id }}</td>
                         <td>
-                            <img [src]="'http://localhost:8080/api/uploads/logos/' + a.logo" 
-                                alt="Escudo"
+                            <img [src]="'http://localhost:8080/api/uploads/logos/' + a.logo" alt="Escudo"
                                 class="rounded-circle border border-2 shadow-sm logo"
                                 style="width: 45px; height: 45px; object-fit: cover;"
                                 onerror="this.src='assets/no-logo.png'">
@@ -56,7 +53,8 @@
                                 <button class="btn btn-outline-warning" (click)="editarAyuntamiento(a)" title="Editar">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
-                                <button class="btn btn-outline-secundario" (click)="eliminarAyuntamiento(a.id)" title="Eliminar">
+                                <button class="btn btn-outline-secundario" (click)="eliminarAyuntamiento(a.id)"
+                                    title="Eliminar">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -66,12 +64,12 @@
                     <tr>
                         <td colspan="5" class="text-center">
                             @if (cargando) {
-                                <div class="spinner-border text-primario" role="status"></div>
-                                <div class="mt-2 text-primario fw-bold">Accediendo a los datos...</div>
+                            <div class="spinner-border text-primario" role="status"></div>
+                            <div class="mt-2 text-primario fw-bold">Accediendo a los datos...</div>
                             } @else {
-                                <i class="bi bi-bank text-muted display-4"></i>
-                                <p class="mt-3 text-muted fw-bold">No se han encontrado ayuntamientos.</p>
-                                <button class="btn btn-sm link-primario" (click)="buscando = ''">Limpiar filtros</button>
+                            <i class="bi bi-bank text-muted display-4"></i>
+                            <p class="mt-3 text-muted fw-bold">No se han encontrado ayuntamientos.</p>
+                            <button class="btn btn-sm link-primario" (click)="buscando = ''">Limpiar filtros</button>
                             }
                         </td>
                     </tr>
@@ -86,11 +84,8 @@
 <div class="modal-backdrop fade show"></div>
 <div class="modal fade show d-block" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-        <app-form-ayuntamiento 
-            class="w-100"
-            [ayuntamientoParaEditar]="ayuntamientoSeleccionado" 
-            (cerrar)="mostrarModal = false"
-            (guardar)="procesarGuardado($event)">
+        <app-form-ayuntamiento class="w-100" [ayuntamientoParaEditar]="ayuntamientoSeleccionado"
+            (cerrar)="mostrarModal = false" (guardar)="procesarGuardado($event)">
         </app-form-ayuntamiento>
     </div>
 </div>

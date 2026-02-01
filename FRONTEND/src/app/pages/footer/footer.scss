@@ -1,24 +1,26 @@
+// Personalización del Pie de Página
 .pie-pagina {
+    position: relative;
     background-color: var(--color-secundario);
     border-top: 5px solid var(--color-primario);
     color: white;
+    overflow: hidden;
+
+    .pie-fondo-degradado {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(25, 25, 25, 0.8) 0%, rgba(0, 68, 68, 0.9) 100%);
+    }
 }
 
-.pie-fondo-degradado {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(111, 111, 111, 0.8) 0%, rgba(0,68,68,0.9) 100%);
-    z-index: 0;
-}
-
+// Enlaces del Pie de Página
 .pie-enlace {
-    color: rgba(255, 255, 255, 0.6);
+    color: white;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
 
     &:hover {
         color: white;
@@ -26,6 +28,7 @@
     }
 }
 
+// Iconos de Redes Sociales
 .enlace-social {
     width: 35px;
     height: 35px;
@@ -43,14 +46,15 @@
         background: var(--color-secundario);
         border-color: var(--color-secundario);
         transform: translateY(-3px);
+        color: white;
     }
 }
 
-/* Ajuste para iconos de contacto */
+// Estilos secundarios
 .text-secondary {
-    color: var(--color-secundario) !important;
+    color: var(--color-secundario);
 }
 
 .border-secondary {
-    border-color: var(--color-secundario) !important;
+    border-color: var(--color-secundario);
 }

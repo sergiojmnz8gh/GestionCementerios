@@ -1,4 +1,4 @@
-<header class="seccion-portada d-flex align-items-center position-relative">
+<header class="seccion-banner d-flex align-items-center position-relative">
     <div class="overlay-fondo-verde"></div>
 
     <div class="container position-relative z-1 text-center text-white">
@@ -120,7 +120,8 @@
                         <ul class="text-start list-unstyled text-muted mb-4">
                             <li class="mb-2"><i class="bi bi-check-circle-fill text-secondary me-2"></i>Consulta la
                                 ubicación de tus seres queridos.</li>
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-secondary me-2"></i>Adquiere y gestiona tus
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-secondary me-2"></i>Adquiere y
+                                gestiona tus
                                 concesiones.</li>
                             <li class="mb-2"><i class="bi bi-check-circle-fill text-secondary me-2"></i>Realiza trámites
                                 online sin esperas.</li>
@@ -160,37 +161,51 @@
             <div class="col-lg-7 mb-4 mb-lg-0">
                 <h2 class="display-6 fw-bold mb-3">¿Eres un Ayuntamiento?</h2>
                 <p class="fs-5 mb-4">
-                    Únete a nuestra plataforma nacional de cementerios digitales. Moderniza tus servicios y ofrece una mejor
+                    Únete a nuestra plataforma nacional de cementerios digitales. Moderniza tus servicios y ofrece una
+                    mejor
                     experiencia a tus ciudadanos.
                 </p>
             </div>
             <div class="col-lg-5">
-                <div class="card border-0 shadow-lg p-4 text-dark" style="border-radius: 20px;">
-                    <h4 class="fw-bold text-primary mb-3">Solicitar Adhesión</h4>
+                <div class="card custom-card shadow-lg p-4">
+                    <h4 class="fw-bold text-primary mb-3">
+                        <i class="bi bi-file-earmark-plus-fill"></i>
+                        Solicitar Adhesión
+                    </h4>
                     <div [formGroup]="form2" class="row g-3">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label fw-semibold">Provincia</label>
-                                <select class="form-select custom-input" formControlName="provincia"
-                                    (change)="onProvinciaChange()">
-                                    <option value="">-- Seleccione --</option>
-                                    @for (p of provincias; track p.CPRO) {
-                                    <option [value]="p.CPRO">{{ p.PRO }}</option>
-                                    }
-                                </select>
-                            </div>
-
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label fw-semibold">Localidad</label>
-                                <select class="form-select custom-input" formControlName="localidad"
-                                    [disabled]="localidades.length == 0">
-                                    <option value="">-- Seleccione --</option>
-                                    @for (l of localidades; track l.CMUN) {
-                                    <option [value]="l.DMUN50">{{ l.DMUN50 }}</option>
-                                    }
-                                </select>
-                            </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">Provincia</label>
+                            <select class="form-select custom-input" formControlName="provincia"
+                                (change)="onProvinciaChange2()">
+                                <option value="">-- Seleccione --</option>
+                                @for (p of provincias; track p.CPRO) {
+                                <option [value]="p.CPRO">{{ p.PRO }}</option>
+                                }
+                            </select>
                         </div>
-                        
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">Localidad</label>
+                            <select class="form-select custom-input" formControlName="localidad"
+                                [disabled]="localidades.length == 0">
+                                <option value="">-- Seleccione --</option>
+                                @for (l of localidades; track l.CMUN) {
+                                <option [value]="l.DMUN50">{{ l.DMUN50 }}</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label fw-semibold">Email de contacto</label>
+                            <input type="email" class="form-control custom-input" formControlName="email">
+                        </div>
+
+                        <button type="submit" class="btn btn-secundario btn-lg py-2" [disabled]="form2.invalid" (click)="
+                            solicitarAdhesion()">
+                            Registrar
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </div>

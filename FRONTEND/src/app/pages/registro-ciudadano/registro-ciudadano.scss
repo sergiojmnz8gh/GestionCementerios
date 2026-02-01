@@ -1,42 +1,52 @@
+// 1. Card personalizada
 .custom-card {
     border: none;
     border-top: 5px solid var(--color-secundario);
     border-radius: 20px;
 }
 
-.custom-input:focus {
-    border-color: var(--color-primario);
-    box-shadow: 0 0 0 0.1rem rgba(0, 85, 85, 0.8);
+// 2. Entradas de Formulario
+.custom-input {
+    &:focus {
+        border-color: var(--color-primario);
+        box-shadow: 0 0 0 0.1rem rgba(0, 85, 85, 0.8);
+        outline: none;
+    }
 }
 
+// 3. Botones
 .btn-secundario {
     background-color: var(--color-secundario);
     color: var(--color-fondo);
     border: 2px solid var(--color-fondo);
     border-radius: 10px;
     transition: all 0.4s ease;
+
+    &:hover {
+        background-color: var(--color-secundario);
+        border-color: var(--color-secundario);
+        color: var(--color-fondo);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 }
 
-.btn-secundario:hover {
-    background-color: var(--color-secundario);
-    border-color: var(--color-secundario);
-    color: var(--color-fondo);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.link-primario {
-    color: var(--color-primario);
-    transition: all 0.4s ease;
-}
-
-.link-primario:hover {
-    color: var(--color-secundario);
-}
-
+// Estilo para botones deshabilitados
 .btn:disabled {
     background-color: #cccccc;
     color: var(--color-texto);
     cursor: not-allowed;
     pointer-events: all; 
+}
+
+// 4. Enlaces
+.link-primario {
+    color: var(--color-primario);
+    transition: all 0.4s ease;
+    text-decoration: none;
+
+    &:hover {
+        color: var(--color-secundario);
+        text-decoration: underline;
+    }
 }

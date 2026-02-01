@@ -1,7 +1,9 @@
 <div class="modal-content border-0 shadow-lg">
-    <div class="modal-header text-white" style="background-color: var(--color-secundario); border-bottom: 4px solid var(--color-primario);">
+    <div class="modal-header text-white"
+        style="background-color: var(--color-secundario); border-bottom: 4px solid var(--color-primario);">
         <h5 class="modal-title fw-bold">
-            <i class="bi me-2" [class.bi-person-plus]="!ciudadanoParaEditar" [class.bi-pencil]="ciudadanoParaEditar"></i>
+            <i class="bi me-2" [class.bi-person-plus-fill]="!ciudadanoParaEditar"
+                [class.bi-pencil]="ciudadanoParaEditar"></i>
             {{ ciudadanoParaEditar ? 'Editar Ciudadano' : 'Nuevo Ciudadano' }}
         </h5>
         <button type="button" class="btn-close btn-close-white" (click)="cerrar.emit()"></button>

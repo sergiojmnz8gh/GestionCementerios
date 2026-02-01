@@ -1,36 +1,49 @@
+// 1. Card Personalizada
 .custom-card {
     width: 420px;
     border: none;
     border-top: 5px solid var(--color-secundario);
     border-radius: 20px;
+    transition: all 0.4s ease;
 }
 
-.custom-input:focus {
-    border-color: var(--color-primario);
-    box-shadow: 0 0 0 0.1rem rgba(0, 85, 85, 0.8);
+// 2. Entradas de Formulario
+.custom-input {
+    &:focus {
+        border-color: var(--color-primario);
+        box-shadow: 0 0 0 0.1rem rgba(0, 85, 85, 0.8);
+    }
 }
 
+// 3. Botones y Acciones
 .btn-secundario {
     background-color: var(--color-secundario);
     color: var(--color-fondo);
     border: 2px solid var(--color-fondo);
     border-radius: 10px;
     transition: all 0.4s ease;
+
+    &:hover {
+        background-color: var(--color-secundario);
+        border-color: var(--color-secundario);
+        color: var(--color-fondo);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
 }
 
-.btn-secundario:hover {
-    background-color: var(--color-secundario);
-    border-color: var(--color-secundario);
-    color: var(--color-fondo);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
+// 4. Enlaces
 .link-primario {
     color: var(--color-primario);
+    text-decoration: none;
     transition: all 0.4s ease;
-}
 
-.link-primario:hover {
-    color: var(--color-secundario);
+    &:hover {
+        color: var(--color-secundario);
+        text-decoration: underline;
+    }
 }

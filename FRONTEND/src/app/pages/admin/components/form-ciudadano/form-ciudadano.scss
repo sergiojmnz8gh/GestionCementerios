@@ -1,1 +1,31 @@
-//No carga, por lo que se hace en el css global (styles.scss)
+// 1. Entradas de Formulario
+.custom-input {
+    &:focus {
+        border-color: var(--color-primario);
+        box-shadow: 0 0 0 0.1rem rgba(0, 85, 85, 0.8);
+    }
+}
+
+.btn-secundario {
+    background-color: var(--color-secundario);
+    color: var(--color-fondo);
+    border: 2px solid var(--color-fondo);
+    border-radius: 10px;
+    transition: all 0.4s ease;
+
+    &:hover {
+        background-color: var(--color-secundario);
+        border-color: var(--color-secundario);
+        color: var(--color-fondo);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+// 3. Estado del botón deshabilitado
+.btn:disabled {
+    background-color: #cccccc;
+    color: var(--color-texto);
+    cursor: not-allowed;
+    pointer-events: all;
+}
