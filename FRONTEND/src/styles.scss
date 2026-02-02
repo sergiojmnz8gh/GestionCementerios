@@ -21,8 +21,8 @@ body {
 
     // Sobrescritura de colores de Bootstrap
     --bs-primary: var(--color-primario);
-    --bs-primary-rgb: #{red(#004444)}, #{green(#004444)}, #{blue(#004444)};
-    
+    --bs-primary-rgb: 0, 68, 68;
     --bs-secondary: var(--color-secundario);
-    --bs-secondary-rgb: #{red(#660000)}, #{green(#660000)}, #{blue(#660000)};
+    --bs-secondary-rgb: 102, 0, 0;
+    
 }

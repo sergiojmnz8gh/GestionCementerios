@@ -36,4 +36,8 @@ public class CementerioService {
             .map(cementerioMapper::toResponseDTO)
             .toList();
     }
+
+    public void eliminar(Integer id) {
+        cementerioRepository.deleteById(id);
+    }
 }

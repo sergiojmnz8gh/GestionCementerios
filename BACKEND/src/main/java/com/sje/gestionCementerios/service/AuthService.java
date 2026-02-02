@@ -70,7 +70,7 @@ public class AuthService {
         if (usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
             throw new IllegalArgumentException("El email ya está en uso");
         }
-
+        
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         Rol rolAyto = rolRepository.findByNombre("AYUNTAMIENTO")
                 .orElseThrow(() -> new RuntimeException("Rol AYUNTAMIENTO no encontrado"));

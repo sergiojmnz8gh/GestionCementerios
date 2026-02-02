@@ -20,6 +20,10 @@ export class Auth {
     return this.http.post(this.authApi_URL + '/registrar/ciudadano', ciudadano);
   }
 
+  registrarAyuntamiento(ayuntamiento: any): Observable<any> {
+    return this.http.post(this.authApi_URL + '/registrar/ayuntamiento', ayuntamiento);
+  }
+
   login(credenciales: any): Observable<any> {
     return this.http.post(this.authApi_URL + '/login', credenciales)
     .pipe(tap((res: any) => {

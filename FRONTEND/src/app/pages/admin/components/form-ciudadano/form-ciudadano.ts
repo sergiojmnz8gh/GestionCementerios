@@ -81,7 +81,7 @@ export class FormCiudadano implements OnInit {
 
   enviar() {
   if (this.registroForm.invalid) return;
-  const nombreProv = this.provincias.find(p => p.CPRO === this.registroForm.value.provincia)?.PRO;
+  const nombreProv = this.provincias.find(p => p.CPRO == this.registroForm.value.provincia)?.PRO;
 
   if (nombreProv) {
     this.registroForm.patchValue({ provincia: nombreProv });

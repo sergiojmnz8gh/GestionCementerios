@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Ayuntamiento } from '../../../../interfaces/ayuntamiento';
+import { Auth } from '../../../../services/auth/auth';
 import { AyuntamientoService } from '../../../../services/ayuntamientoService/ayuntamiento-service';
 import { FormAyuntamiento } from "../form-ayuntamiento/form-ayuntamiento";
 
@@ -20,8 +21,9 @@ export class ListaAyuntamientos implements OnInit {
 
   constructor(
     private ayuntamientoService: AyuntamientoService,
-    private cdr: ChangeDetectorRef
-  ) {}
+    private cdr: ChangeDetectorRef,
+    private authService: Auth
+  ) { }
 
   ngOnInit(): void {
     this.cargarAyuntamientos();
@@ -59,14 +61,14 @@ export class ListaAyuntamientos implements OnInit {
   }
 
   abrirModal() {
-      this.ayuntamientoSeleccionado = null;
-      this.mostrarModal = true;
-    }
-  
-    editarAyuntamiento(a: Ayuntamiento) {
-      this.ayuntamientoSeleccionado = a;
-      this.mostrarModal = true;
-    }
+    this.ayuntamientoSeleccionado = null;
+    this.mostrarModal = true;
+  }
+
+  editarAyuntamiento(a: Ayuntamiento) {
+    this.ayuntamientoSeleccionado = a;
+    this.mostrarModal = true;
+  }
 
   procesarGuardado(datos: any) {
     if (this.ayuntamientoSeleccionado) {
@@ -75,7 +77,7 @@ export class ListaAyuntamientos implements OnInit {
         error: (err: any) => console.error(err)
       });
     } else {
-      this.ayuntamientoService.crear(datos).subscribe({
+      this.authService.registrarAyuntamiento(datos).subscribe({
         next: () => this.finalizarAccion('Ayuntamiento creado'),
         error: (err: any) => console.error(err)
       });

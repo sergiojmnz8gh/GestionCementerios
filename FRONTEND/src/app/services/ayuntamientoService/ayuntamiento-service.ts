@@ -19,10 +19,6 @@ export class AyuntamientoService {
     return this.http.get<Ayuntamiento>(this.ayuntamientoApi_URL + '/' + id);
   }
 
-  crear(datos: any): Observable<Ayuntamiento> {
-    return this.http.post<Ayuntamiento>(this.ayuntamientoApi_URL + '/crear', datos);
-  }
-
   actualizar(id: number, datos: any): Observable<Ayuntamiento> {
     return this.http.put<Ayuntamiento>(this.ayuntamientoApi_URL + '/actualizar/' + id, datos);
   }

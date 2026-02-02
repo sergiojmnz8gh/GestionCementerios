@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Ciudadano } from '../../../../interfaces/ciudadano';
+import { Auth } from '../../../../services/auth/auth';
 import { CiudadanoService } from '../../../../services/ciudadanoService/ciudadano-service';
 import { FormCiudadano } from '../form-ciudadano/form-ciudadano';
 
@@ -20,7 +21,8 @@ export class ListaCiudadanos implements OnInit {
 
   constructor(
     private ciudadanoService: CiudadanoService, 
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private authService: Auth
   ) { }
 
   ngOnInit(): void {
@@ -76,7 +78,7 @@ export class ListaCiudadanos implements OnInit {
         error: (err: any) => console.error(err)
       });
     } else {
-      this.ciudadanoService.crear(datos).subscribe({
+      this.authService.registrarCiudadano(datos).subscribe({
         next: () => this.finalizarAccion('Ciudadano creado'),
         error: (err: any) => console.error(err)
       });

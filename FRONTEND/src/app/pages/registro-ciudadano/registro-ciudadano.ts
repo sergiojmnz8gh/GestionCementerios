@@ -56,7 +56,7 @@ export class RegistroCiudadano implements OnInit {
 
   enviarRegistro() {
     if (this.registroForm.valid) {
-      const nombreProvincia = this.provincias.find(p => p.CPRO === this.registroForm.value.provincia)?.PRO;
+      const nombreProvincia = this.provincias.find(p => p.CPRO == this.registroForm.value.provincia)?.PRO;
       this.registroForm.get('provincia')?.setValue(nombreProvincia);
       const datos = this.registroForm.value;
 

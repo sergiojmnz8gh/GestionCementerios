@@ -5,13 +5,12 @@ import { Concesion } from '../../../../interfaces/concesion';
 import { ConcesionService } from '../../../../services/concesionService/concesion-service';
 
 @Component({
-  selector: 'app-lista-concesiones',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './lista-concesiones.html',
-  styleUrl: './lista-concesiones.scss',
+  selector: 'app-mis-concesiones',
+  imports: [FormsModule, CommonModule],
+  templateUrl: './mis-concesiones.html',
+  styleUrl: './mis-concesiones.scss',
 })
-export class ListaConcesiones implements OnInit {
+export class MisConcesiones implements OnInit{
   concesiones: Concesion[] = [];
   cargando: boolean = true;
   buscando: string = '';
@@ -58,11 +57,5 @@ export class ListaConcesiones implements OnInit {
 
   renovarConcesion(id: number): void {
     
-  }
-
-  eliminarConcesion(id: number): void {
-    if (confirm('¿Desea anular esta concesión? Esta acción liberará las parcelas asociadas.')) {
-      this.concesionService.eliminar(id).subscribe(() => this.cargarConcesiones());
-    }
   }
 }

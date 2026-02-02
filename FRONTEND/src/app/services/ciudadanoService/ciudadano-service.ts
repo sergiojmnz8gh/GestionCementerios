@@ -19,10 +19,6 @@ export class CiudadanoService {
     return this.http.get<Ciudadano>(this.ciudadanoApi_URL + '/' + id);
   }
 
-  crear(datos: any): Observable<Ciudadano> {
-    return this.http.post<Ciudadano>(this.ciudadanoApi_URL + '/crear', datos);
-  }
-
   actualizar(id: number, datos: any): Observable<Ciudadano> {
     return this.http.put<Ciudadano>(this.ciudadanoApi_URL + '/actualizar/' + id, datos);
   }

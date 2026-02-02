@@ -23,4 +23,8 @@ export class CementerioService {
     const localidadEscapada = encodeURIComponent(localidad);
     return this.http.get<Cementerio[]>(this.cementerioApi_URL + '/localidad/' + localidadEscapada);
   }
+
+  eliminar(id: number): Observable<void> {
+    return this.http.delete<void>(this.cementerioApi_URL + '/eliminar/' + id);
+  }
 }
