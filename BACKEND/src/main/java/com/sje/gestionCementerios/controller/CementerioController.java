@@ -41,6 +41,6 @@ public class CementerioController {
     @PreAuthorize("hasRole('ADMIN') or #id == authentication.principal.id")
     public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
         cementerioService.eliminar(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }

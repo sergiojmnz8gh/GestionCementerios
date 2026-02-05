@@ -5,13 +5,10 @@ import { ListaAyuntamientos } from './components/lista-ayuntamientos/lista-ayunt
 import { ListaCementerios } from './components/lista-cementerios/lista-cementerios';
 import { ListaCiudadanos } from './components/lista-ciudadanos/lista-ciudadanos';
 import { ListaConcesiones } from './components/lista-concesiones/lista-concesiones';
-import { ListaDifuntos } from './components/lista-difuntos/lista-difuntos';
-import { ListaPagos } from './components/lista-pagos/lista-pagos';
-import { ListaServicios } from './components/lista-servicios/lista-servicios';
 
 @Component({
   selector: 'app-admin',
-  imports: [CommonModule, ListaCiudadanos, ListaAyuntamientos, ListaCementerios, ListaConcesiones, ListaDifuntos, ListaPagos, ListaServicios],
+  imports: [CommonModule, ListaCiudadanos, ListaAyuntamientos, ListaCementerios, ListaConcesiones],
   templateUrl: './admin.html',
   styleUrl: './admin.scss',
 })

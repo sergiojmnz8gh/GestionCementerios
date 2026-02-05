@@ -1,1 +1,26 @@
-<p>ayuntamiento works!</p>
+<div class="d-flex min-vh-100 ayuntamiento-layout">
+
+    <main class="container p-5">
+        <header class="content-header shadow-sm">
+            <div class="d-flex align-items-center">
+                <div class="view-indicator me-3"></div>
+                <h2 class="text-primario fw-bold mb-0">
+                    {{ vista == 'mis-cementerios' ? 'Mis Cementerios' : 'Editar Perfil' }}
+                </h2>
+            </div>
+            <div class="d-flex align-items-center">
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="view-container animate__animated animate__fadeIn">
+
+                @if (vista == 'mis-cementerios') {
+                <app-mis-cementerios></app-mis-cementerios>
+                } @else if (vista == 'editar-perfil') {
+                <app-editar-perfil></app-editar-perfil>
+                }
+            </div>
+        </div>
+    </main>
+</div>

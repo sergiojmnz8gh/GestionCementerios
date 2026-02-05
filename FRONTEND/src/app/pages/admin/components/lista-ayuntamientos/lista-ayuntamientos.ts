@@ -70,14 +70,22 @@ export class ListaAyuntamientos implements OnInit {
     this.mostrarModal = true;
   }
 
-  procesarGuardado(datos: any) {
+  procesarGuardado(event: { datos: any, archivo: File | null }) {
+    const formData = new FormData();
+    formData.append('email', event.datos.email);
+    formData.append('provincia', event.datos.provincia);
+    formData.append('localidad', event.datos.localidad);
+    formData.append('telefono', event.datos.telefono);
+    if (event.archivo) {
+      formData.append('logo', event.archivo);
+    }
     if (this.ayuntamientoSeleccionado) {
-      this.ayuntamientoService.actualizar(this.ayuntamientoSeleccionado.id, datos).subscribe({
+      this.ayuntamientoService.actualizar(this.ayuntamientoSeleccionado.id, formData).subscribe({
         next: () => this.finalizarAccion('Ayuntamiento actualizado'),
         error: (err: any) => console.error(err)
       });
     } else {
-      this.authService.registrarAyuntamiento(datos).subscribe({
+      this.authService.registrarAyuntamiento(formData).subscribe({
         next: () => this.finalizarAccion('Ayuntamiento creado'),
         error: (err: any) => console.error(err)
       });

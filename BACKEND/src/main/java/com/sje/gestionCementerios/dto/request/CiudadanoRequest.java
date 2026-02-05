@@ -26,8 +26,6 @@ public class CiudadanoRequest {
     @NotBlank(message = "Los apellidos son obligatorios")
     private String apellidos;
 
-    @NotBlank(message = "La contraseña es obligatoria")
-    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
     private String password;
 
     @NotBlank(message = "El teléfono es obligatorio")

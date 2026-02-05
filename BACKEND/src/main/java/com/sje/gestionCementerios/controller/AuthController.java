@@ -2,10 +2,12 @@ package com.sje.gestionCementerios.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +45,8 @@ public class AuthController {
     }
 
     @PostMapping("/registrar/ayuntamiento")
-    public ResponseEntity<TokenResponse> register(@RequestBody @Valid AyuntamientoRequest registroAyuntamientoDTO, @RequestPart("logo") MultipartFile logo) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<TokenResponse> register(@ModelAttribute @Valid AyuntamientoRequest registroAyuntamientoDTO, @RequestPart("logo") MultipartFile logo) {
 
         Usuario usuario = authService.registrarAyuntamiento(registroAyuntamientoDTO, logo);
         String token = jwtService.generateToken(usuario);

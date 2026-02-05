@@ -38,6 +38,11 @@ public class CiudadanoController {
         return ResponseEntity.ok(ciudadanoService.buscarPorId(id));
     }
 
+    @GetMapping("/perfil")
+    public ResponseEntity<CiudadanoResponse> obtenerPerfilActual() {
+        return ResponseEntity.ok(ciudadanoService.obtenerPerfilActual());
+    }
+
     @PutMapping("/actualizar/{id}")
     @PreAuthorize("hasRole('ADMIN') or #id == authentication.principal.id")
     public ResponseEntity<CiudadanoResponse> actualizar(@PathVariable Integer id, @RequestBody CiudadanoResponse ciudadano) {
@@ -48,6 +53,6 @@ public class CiudadanoController {
     @PreAuthorize("hasRole('ADMIN') or #id == authentication.principal.id")
     public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
         ciudadanoService.eliminar(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }

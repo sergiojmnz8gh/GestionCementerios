@@ -8,35 +8,38 @@
         <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav ms-auto align-items-center">
 
-                @if (auth.rol() != '') {
-                @if (auth.rol() == 'CIUDADANO' || auth.rol()=='AYUNTAMIENTO' || (auth.rol() == 'ADMIN'&&
+                @if (auth.getRol()() != '') {
+                @if (auth.getRol()() == 'CIUDADANO' || auth.getRol()()=='AYUNTAMIENTO' || (auth.getRol()() == 'ADMIN'&&
                 !router.url.startsWith('/admin'))) {
                 <div class="dropdown">
                     <button class="btn-secundario dropdown-toggle d-flex align-items-center" type="button"
-                        data-bs-toggle="dropdown"> 
+                        data-bs-toggle="dropdown">
                         <i class="bi bi-person-circle text-white fs-4 me-2"></i>
+                        <span>{{ auth.getEmail()() }}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end animate slideIn">
                         <li>
-                            <h6 class="dropdown-header">Gestión del {{ auth.rol() }}</h6>
+                            <h6 class="dropdown-header">Gestión del {{ auth.getRol()() }}</h6>
                         </li>
-                        
-                        @if (auth.rol() == 'ADMIN') {
+
+                        @if (auth.getRol()() == 'ADMIN') {
                         <li><a class="dropdown-item" routerLink="/admin"><i class="bi bi-speedometer2 me-2"></i>
                                 Panel de Administración</a></li>
                         }
 
-                        @if (auth.rol() == 'AYUNTAMIENTO') {
-                        <li><a class="dropdown-item" routerLink="/ayuntamiento/cementerios"><i
+                        @if (auth.getRol()() == 'AYUNTAMIENTO') {
+                        <li><a class="dropdown-item" routerLink="/ayuntamiento"><i
                                     class="bi bi-file-earmark-text me-2"></i>Mis Cementerios</a></li>
-                        <li><a class="dropdown-item" routerLink="/ayuntamiento/editar-perfil"><i class="bi bi-person me-2"></i>Editar
+                        <li><a class="dropdown-item" routerLink="/ayuntamiento/editar-perfil"><i
+                                    class="bi bi-person me-2"></i>Editar
                                 Perfil</a></li>
                         }
-                        
-                        @if (auth.rol() == 'CIUDADANO') {
-                        <li><a class="dropdown-item" routerLink="/ciudadano/concesiones"><i
+
+                        @if (auth.getRol()() == 'CIUDADANO') {
+                        <li><a class="dropdown-item" routerLink="/ciudadano"><i
                                     class="bi bi-file-earmark-text me-2"></i>Mis Concesiones</a></li>
-                        <li><a class="dropdown-item" routerLink="/ciudadano/editar-perfil"><i class="bi bi-person me-2"></i>Editar
+                        <li><a class="dropdown-item" routerLink="/ciudadano/editar-perfil"><i
+                                    class="bi bi-person me-2"></i>Editar
                                 Perfil</a></li>
                         }
 

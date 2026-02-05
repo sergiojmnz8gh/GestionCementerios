@@ -48,6 +48,10 @@ public class AuthService {
             throw new IllegalArgumentException("El email ya está en uso");
         }
 
+        if (usuario.getPassword() == null || usuario.getPassword().trim().isEmpty()) {
+            usuario.setPassword("temporal123");
+        }
+
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         Rol rolCiudadano = rolRepository.findByNombre("CIUDADANO")
                 .orElseThrow(() -> new RuntimeException("Rol CIUDADANO no encontrado"));
@@ -71,6 +75,10 @@ public class AuthService {
             throw new IllegalArgumentException("El email ya está en uso");
         }
         
+        if (usuario.getPassword() == null || usuario.getPassword().trim().isEmpty()) {
+            usuario.setPassword("temporal123");
+        }
+
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         Rol rolAyto = rolRepository.findByNombre("AYUNTAMIENTO")
                 .orElseThrow(() -> new RuntimeException("Rol AYUNTAMIENTO no encontrado"));
@@ -79,13 +87,13 @@ public class AuthService {
         Usuario usuarioGuardado = usuarioRepository.save(usuario);
 
         ayuntamiento.setUsuario(usuarioGuardado);
+        ayuntamientoRepository.save(ayuntamiento);
 
         if (logo != null && !logo.isEmpty()) {
         String nombreArchivo = logoService.guardar(logo, ayuntamiento.getId());
             ayuntamiento.setLogoUrl(nombreArchivo);
+            ayuntamientoRepository.save(ayuntamiento);
         }
-
-        ayuntamientoRepository.save(ayuntamiento);
 
         return usuarioGuardado;
     }

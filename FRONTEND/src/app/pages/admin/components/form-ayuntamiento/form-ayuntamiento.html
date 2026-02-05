@@ -11,15 +11,15 @@
     <form [formGroup]="registroForm" (ngSubmit)="enviar()">
         <div class="modal-body p-4">
             <div class="row g-3">
-                <div class="col-md-7">
+                <div class="col-md-6">
                     <label class="form-label fw-bold">Email</label>
                     <input type="email" formControlName="email" class="form-control custom-input">
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-3">
                     <label class="form-label fw-bold text-verde">Logo</label>
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex gap-3">
                         <div
-                            class="logo-preview shadow-sm border d-flex align-items-center justify-content-center bg-light">
+                            class="logo-preview shadow-sm border d-flex align-items-center justify-content-center bg-light w-50">
                             @if (logo()) {
                             <img [src]="logo()" alt="Logo preview" class="img-fluid">
                             } @else {
@@ -31,10 +31,15 @@
                             <input type="file" #fileInput formControlName="logo" class="form-control d-none"
                                 (change)="fotoSubida($event)" accept="image/*">
                             <button type="button" class="btn btn-primario w-100" (click)="fileInput.click()">
-                                <i class="bi bi-upload me-2"></i>Seleccionar Imagen
+                                <i class="bi bi-upload me-2"></i>
                             </button>
                         </div>
                     </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">Telefono</label>
+                    <input type="text" formControlName="telefono" class="form-control custom-input">
                 </div>
 
                 <div class="col-md-6">

@@ -29,11 +29,8 @@ public class Parcela {
     @Column(nullable = false)
     private String numero;
 
-    @Column(name = "coordenadas_poligono", length = 1000)
-    private String coordenadasPoligono;
-
     @Column(length = 20)
-    private String estado; // 'LIBRE', 'OCUPADO'
+    private String estado;
 
     @Column(name = "foto_lapida_url")
     private String fotoLapidaUrl;

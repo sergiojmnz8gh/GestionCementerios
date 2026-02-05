@@ -1,0 +1,80 @@
+.custom-card {
+    border: none;
+    border-top: 5px solid var(--color-primario);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.canvas-wrapper {
+    border: 2px solid #dee2e6;
+    border-radius: 15px;
+    background: white;
+    padding: 10px;
+
+    canvas {
+        border-radius: 8px;
+    }
+}
+
+.custom-input {
+    border-radius: 10px;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+
+    &:focus {
+        border-color: var(--color-primario);
+        box-shadow: 0 0 0 0.2rem rgba(0, 85, 85, 0.15);
+    }
+}
+
+.btn-primario {
+    background-color: var(--color-primario);
+    color: white;
+    border-radius: 10px;
+    padding: 0.6rem 1.5rem;
+    border: none;
+    transition: all 0.3s ease;
+
+    &:hover:not(:disabled) {
+        background-color: #004444;
+        transform: translateY(-1px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.btn-secundario {
+    background-color: var(--color-secundario);
+    color: var(--color-fondo);
+    border: 2px solid var(--color-fondo);
+    border-radius: 10px;
+    transition: all 0.4s ease;
+
+    &:hover {
+        background-color: var(--color-secundario);
+        border-color: var(--color-secundario);
+        color: var(--color-fondo);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.btn:disabled {
+    background-color: #cccccc;
+    color: var(--color-texto);
+    cursor: not-allowed;
+    pointer-events: all;
+}
+
+.badge-dibujo {
+    background: rgba(0, 85, 85, 0.9);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.text-verde {
+    color: var(--color-primario);
+}
+
+.bg-verde {
+    background-color: var(--color-primario);
+}

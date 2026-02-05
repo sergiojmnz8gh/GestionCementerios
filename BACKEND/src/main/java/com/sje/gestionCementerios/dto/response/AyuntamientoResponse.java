@@ -9,4 +9,5 @@ public class AyuntamientoResponse {
     private String localidad;
     private String provincia;
     private String logoUrl;
+    private String telefono;
 }

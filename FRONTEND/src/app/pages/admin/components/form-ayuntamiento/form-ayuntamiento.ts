@@ -27,6 +27,7 @@ export class FormAyuntamiento implements OnInit {
       logo: new FormControl('', [Validators.required]),
       provincia: new FormControl('', [Validators.required]),
       localidad: new FormControl('', [Validators.required]),
+      telefono: new FormControl('', [Validators.required]),
     });
   }
 
@@ -36,13 +37,13 @@ export class FormAyuntamiento implements OnInit {
         this.provincias = datos;
 
         if (this.ayuntamientoParaEditar) {
-        const provEncontrada = this.provincias.find(p => p.PRO == this.ayuntamientoParaEditar?.provincia);
-        
-        if (provEncontrada) {
-          this.registroForm.patchValue({ provincia: provEncontrada.CPRO });
-          this.cargarLocalidades(provEncontrada.CPRO);
+          const provEncontrada = this.provincias.find(p => p.PRO == this.ayuntamientoParaEditar?.provincia);
+
+          if (provEncontrada) {
+            this.registroForm.patchValue({ provincia: provEncontrada.CPRO });
+            this.cargarLocalidades(provEncontrada.CPRO);
+          }
         }
-      }
 
         this.relo.markForCheck();
       }
@@ -59,7 +60,7 @@ export class FormAyuntamiento implements OnInit {
       this.geoApi.getLocalidades(codProv).subscribe({
         next: (datos) => {
           this.localidades = datos;
-          this.registroForm.get('localidad')?.setValue(''); 
+          this.registroForm.get('localidad')?.setValue('');
           this.relo.markForCheck();
         }
       });
@@ -90,14 +91,17 @@ export class FormAyuntamiento implements OnInit {
   }
 
   enviar() {
-  if (this.registroForm.invalid) return;
-  const nombreProv = this.provincias.find(p => p.CPRO == this.registroForm.value.provincia)?.PRO;
+    if (this.registroForm.invalid) return;
+    const nombreProv = this.provincias.find(p => p.CPRO == this.registroForm.value.provincia)?.PRO;
 
-  if (nombreProv) {
-    this.registroForm.patchValue({ provincia: nombreProv });
-  }
+    const valores = { ...this.registroForm.value };
+    if (nombreProv) {
+      valores.provincia = nombreProv;
+    }
 
-  console.log(this.registroForm.value);
-  this.guardar.emit(this.registroForm.value);
+    this.guardar.emit({
+      datos: valores,
+      archivo: this.logoArchivo
+    });
   }
 }

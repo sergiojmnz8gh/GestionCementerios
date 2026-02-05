@@ -11,12 +11,12 @@ import { validadores } from '../../validadores';
   styleUrl: './registro-ciudadano.scss',
 })
 export class RegistroCiudadano implements OnInit {
-  
+
   registroForm: FormGroup;
   provincias: any[] = [];
   localidades: any[] = [];
 
-  constructor(private geoApi: GeoApi,private ciudadano: Auth, private relo: ChangeDetectorRef) {
+  constructor(private geoApi: GeoApi, private ciudadano: Auth, private relo: ChangeDetectorRef) {
     this.registroForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       dni: new FormControl('', [Validators.required, validadores.dni]),
@@ -47,7 +47,7 @@ export class RegistroCiudadano implements OnInit {
       this.geoApi.getLocalidades(codProv).subscribe({
         next: (datos) => {
           this.localidades = datos;
-          this.registroForm.get('localidad')?.setValue(''); 
+          this.registroForm.get('localidad')?.setValue('');
           this.relo.markForCheck();
         }
       });
@@ -57,8 +57,11 @@ export class RegistroCiudadano implements OnInit {
   enviarRegistro() {
     if (this.registroForm.valid) {
       const nombreProvincia = this.provincias.find(p => p.CPRO == this.registroForm.value.provincia)?.PRO;
-      this.registroForm.get('provincia')?.setValue(nombreProvincia);
-      const datos = this.registroForm.value;
+
+      const datos = {
+        ...this.registroForm.value,
+        provincia: nombreProvincia
+      };
 
       this.ciudadano.registrarCiudadano(datos).subscribe({
         next: (respuesta) => {

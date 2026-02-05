@@ -2,6 +2,7 @@ package com.sje.gestionCementerios.service;
 
 import java.util.List;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.sje.gestionCementerios.dto.mapper.CiudadanoMapper;
@@ -28,6 +29,14 @@ public class CiudadanoService {
         return ciudadanoRepository.findById(id)
         .map(ciudadanoMapper::toResponseDTO)
         .orElseThrow();
+    }
+
+    public CiudadanoResponse obtenerPerfilActual() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        return ciudadanoRepository.findByUsuario_Email(email)
+                .map(ciudadanoMapper::toResponseDTO)
+                .orElseThrow(() -> new RuntimeException("Perfil no encontrado"));
     }
 
     public CiudadanoResponse actualizar(Integer id, CiudadanoResponse ciudadano) {

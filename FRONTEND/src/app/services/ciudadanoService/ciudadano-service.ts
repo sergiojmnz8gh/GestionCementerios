@@ -19,6 +19,10 @@ export class CiudadanoService {
     return this.http.get<Ciudadano>(this.ciudadanoApi_URL + '/' + id);
   }
 
+  obtenerPerfilActual(): Observable<Ciudadano> {
+    return this.http.get<Ciudadano>(this.ciudadanoApi_URL + '/perfil');
+  }
+
   actualizar(id: number, datos: any): Observable<Ciudadano> {
     return this.http.put<Ciudadano>(this.ciudadanoApi_URL + '/actualizar/' + id, datos);
   }

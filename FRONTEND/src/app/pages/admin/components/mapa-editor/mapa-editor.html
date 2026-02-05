@@ -1,0 +1,100 @@
+<div class="container py-5 animate__animated animate__fadeIn">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="custom-card card shadow-lg">
+                <div class="card-header bg-white border-0 p-4">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                        <div>
+                            <h4 class="mb-0 text-verde fw-bold">
+                                <i class="bi bi-map-fill me-2"></i>Editor de Mapas
+                            </h4>
+                            <p class="text-muted small mb-0">Cementerio: {{cementerioId}}</p>
+                        </div>
+
+                        <div class="btn-group shadow-sm rounded-3 overflow-hidden">
+                            <button class="btn btn-secundario border-0 px-3" (click)="borrarSeleccionado()"
+                                title="Borrar zona seleccionada">
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                            <button class="btn border-0 px-4" [ngClass]="isDrawing ? 'btn-success' : 'btn-dark'"
+                                (click)="activarModoDibujo()">
+                                <i class="bi" [ngClass]="isDrawing ? 'bi-pencil-fill' : 'bi-plus-square'"></i>
+                                <span class="ms-2 fw-bold">{{ isDrawing ? 'Dibujando...' : 'Nueva Zona' }}</span>
+                            </button>
+
+                            <button class="btn btn-primario border-0 px-4" (click)="guardarMapa()">
+                                <i class="bi bi-cloud-check me-1"></i> Guardar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="card-body bg-light p-0 position-relative overflow-hidden text-center border-top border-bottom">
+                    <div *ngIf="isDrawing"
+                        class="animate__animated animate__fadeInDown position-absolute top-0 start-50 translate-middle-x mt-3"
+                        style="z-index: 10;">
+                        <span class="badge bg-success shadow-sm px-3 py-2 fs-6">
+                            <i class="bi bi-cursor-fill me-2"></i>Haz clic y arrastra para definir el área
+                        </span>
+                    </div>
+
+                    <div class="canvas-wrapper d-inline-block shadow-sm my-4 bg-white rounded-3 border">
+                        <canvas #htmlCanvas></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="zonaModal" tabindex="-1" #zonaModal>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg custom-card">
+            <div class="modal-header bg-verde text-white border-0 p-4">
+                <h4 class="modal-title fw-bold">
+                    <i class="bi bi-gear-fill me-2"></i>Configurar Nueva Zona
+                </h4>
+            </div>
+            <div class="modal-body p-4 p-md-5">
+                <div class="row g-4">
+                    <div class="col-12">
+                        <label class="form-label fw-bold text-verde">Nombre de la Zona</label>
+                        <input type="text" class="form-control custom-input" [(ngModel)]="nuevaZona.nombre">
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label fw-bold text-verde">Tipo de Zona</label>
+                        <select class="form-select custom-input" [(ngModel)]="nuevaZona.tipo_zona">
+                            <option value="NICHO">NICHOS</option>
+                            <option value="TUMBA">TUMBAS</option>
+                            <option value="CRIPTA">CRIPTA</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6" *ngIf="nuevaZona.tipo_zona !== 'CRIPTA'">
+                        <label class="form-label fw-bold text-verde">Filas</label>
+                        <input type="number" class="form-control custom-input" [(ngModel)]="nuevaZona.filas" min="1">
+                    </div>
+
+                    <div [ngClass]="nuevaZona.tipo_zona === 'CRIPTA' ? 'col-12' : 'col-md-6'">
+                        <label class="form-label fw-bold text-verde">
+                            {{ nuevaZona.tipo_zona === 'CRIPTA' ? 'Cantidad de Criptas' : 'Columnas' }}
+                        </label>
+                        <input type="number" class="form-control custom-input" [(ngModel)]="nuevaZona.columnas" min="1">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-light border-0 p-4 justify-content-center">
+                <button type="button" class="btn btn-secundario px-5" (click)="cancelarZona()">
+                    <i class="bi bi-x-lg me-1"></i> Cancelar
+                </button>
+                <button type="button" class="btn btn-primario px-5 shadow-sm" [disabled]="!nuevaZona.nombre"
+                    (click)="confirmarZona()">
+                    <i class="bi bi-check-lg me-1"></i> Guardar Zona
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

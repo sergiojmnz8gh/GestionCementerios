@@ -26,20 +26,6 @@
                 (click)="vista = 'concesiones'">
                 <i class="bi bi-file-earmark-text me-3"></i> Concesiones
             </button>
-
-            <button class="nav-link mb-2 sidebar-item" [class.active]="vista == 'pagos'" (click)="vista = 'pagos'">
-                <i class="bi bi-cash me-3"></i> Pagos
-            </button>
-
-            <button class="nav-link mb-2 sidebar-item" [class.active]="vista == 'servicios'"
-                (click)="vista = 'servicios'">
-                <i class="bi bi-box me-3"></i> Servicios
-            </button>
-
-            <button class="nav-link mb-2 sidebar-item" [class.active]="vista == 'difuntos'"
-                (click)="vista = 'difuntos'">
-                <i class="bi bi-person-fill me-3"></i> Difuntos
-            </button>
         </nav>
 
         <div class="sidebar-footer px-3">
@@ -72,12 +58,6 @@
             <app-lista-cementerios></app-lista-cementerios>
             } @else if (vista == 'concesiones') {
             <app-lista-concesiones></app-lista-concesiones>
-            } @else if (vista == 'pagos') {
-            <app-lista-pagos></app-lista-pagos>
-            } @else if (vista == 'servicios') {
-            <app-lista-servicios></app-lista-servicios>
-            } @else if (vista == 'difuntos') {
-            <app-lista-difuntos></app-lista-difuntos>
             }
         </div>
     </main>

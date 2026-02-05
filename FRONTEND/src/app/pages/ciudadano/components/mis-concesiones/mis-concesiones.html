@@ -1,21 +1,4 @@
 <div class="container-fluid py-4">
-    <div class="row mb-4 align-items-center">
-        <div class="col-md-8">
-            <div class="input-group shadow-sm">
-                <span class="input-group-text bg-white border-end-0">
-                    <i class="bi bi-search text-primario"></i>
-                </span>
-                <input type="text" class="form-control border-start-0 ps-0 custom-input" 
-                    placeholder="Buscar..."
-                    [(ngModel)]="buscando">
-            </div>
-        </div>
-        <div class="col-md-4 text-md-end mt-3 mt-md-0">
-            <button class="btn btn-secundario shadow-sm px-4">
-                <i class="bi bi-plus me-2"></i> Nueva Concesión
-            </button>
-        </div>
-    </div>
 
     <div class="card shadow-sm custom-card">
         <div class="table-responsive">
@@ -36,14 +19,14 @@
                         <td class="text-primary fw-bold">#{{ c.id }}</td>
                         <td>
                             <div class="fw-semibold">{{ c.ciudadano }}</div>
-                            <div class="small text-muted">{{ c.parcelas.length }} Parcelas vinculadas</div>
                         </td>
                         <td>{{ c.fechaCompra | date:'dd/MM/yyyy' }}</td>
                         <td>
-                            <span class="badge" 
-                                [ngClass]="esExpiracionCercana(c.fechaFin) ? 'bg-warning text-dark' : 'bg-light text-dark border'">
+                            <span class="fw-semibold" 
+                                [ngClass]="esExpiracionCercana(c.fechaFin) ? 'bg-warning' : ''">
                                 {{ c.fechaFin | date:'dd/MM/yyyy' }}
                                 @if(esExpiracionCercana(c.fechaFin)) { <i class="bi bi-exclamation-triangle ms-1"></i> }
+                                <div class="small text-muted">{{ c.parcelas.length }} Parcelas vinculadas</div>
                             </span>
                         </td>
                         <td>
@@ -65,7 +48,7 @@
                                 <div class="mt-2 text-primario fw-bold">Accediendo a los datos...</div>
                             } @else {
                                 <i class="bi bi-file-earmark-x text-muted display-4"></i>
-                                <p class="mt-3 text-muted fw-bold">No tienes concesiones registradas.</p>
+                                <p class="mt-3 text-muted fw-bold">No hay concesiones registradas.</p>
                             }
                         </td>
                     </tr>

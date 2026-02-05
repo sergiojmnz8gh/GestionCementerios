@@ -1,7 +1,8 @@
 export interface Ayuntamiento {
     id: number;
     email: string;
-    logo: string;
+    logoUrl: string;
     localidad: string;
     provincia: string;
+    telefono: string;
 }

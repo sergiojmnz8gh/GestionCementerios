@@ -19,8 +19,12 @@ export class AyuntamientoService {
     return this.http.get<Ayuntamiento>(this.ayuntamientoApi_URL + '/' + id);
   }
 
-  actualizar(id: number, datos: any): Observable<Ayuntamiento> {
-    return this.http.put<Ayuntamiento>(this.ayuntamientoApi_URL + '/actualizar/' + id, datos);
+  obtenerPerfilActual(): Observable<Ayuntamiento> {
+      return this.http.get<Ayuntamiento>(this.ayuntamientoApi_URL + '/perfil');
+    }
+
+  actualizar(id: number, formData: FormData): Observable<Ayuntamiento> {
+    return this.http.put<Ayuntamiento>(this.ayuntamientoApi_URL + '/actualizar/' + id, formData);
   }
 
   eliminar(id: number): Observable<void> {

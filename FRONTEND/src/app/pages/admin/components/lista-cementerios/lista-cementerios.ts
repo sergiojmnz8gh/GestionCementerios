@@ -43,7 +43,7 @@ export class ListaCementerios implements OnInit {
     const texto = this.buscando.toLowerCase();
     return this.cementerios.filter(c =>
       c.nombre.toLowerCase().includes(texto) ||
-      c.ayuntamiento.toLowerCase().includes(texto)
+      c.localidadAyuntamiento.toLowerCase().includes(texto)
     );
   }
 

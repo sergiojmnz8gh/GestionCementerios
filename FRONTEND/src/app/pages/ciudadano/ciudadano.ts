@@ -23,8 +23,4 @@ export class Ciudadano {
       }
     });
   }
-
-  logout() {
-    // Lógica para borrar token y redirigir a la landing
-  }
 }

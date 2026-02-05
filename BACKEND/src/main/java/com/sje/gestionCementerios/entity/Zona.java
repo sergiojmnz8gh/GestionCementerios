@@ -35,6 +35,9 @@ public class Zona {
     @Column(name = "tipo_zona", nullable = false)
     private TipoZona tipoZona;
 
+    @Column(name = "coordenadas_poligono", length = 1000)
+    private String coordenadasPoligono;
+
     @Column(nullable = false)
     private Integer filas;
 

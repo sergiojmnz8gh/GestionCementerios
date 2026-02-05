@@ -1,1 +1,52 @@
-<p>editar-perfil works!</p>
+<div class="container py-5 animate__animated animate__fadeIn">
+    <div class="row justify-content-center">
+        <div class="col-lg-9 col-xl-8">
+            <div class="custom-card card shadow-lg">
+                <form [formGroup]="perfilForm" (ngSubmit)="actualizar()">
+                    <div class="card-body p-4 p-md-5">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-verde">Logo</label>
+                                <div class="d-flex flex-column align-items-center gap-3">
+                                    <div class="logo-preview shadow-sm border d-flex align-items-center justify-content-center bg-light w-100"
+                                        style="height: 200px; border-radius: 8px; overflow: hidden;">
+                                        @if (logo()) {
+                                        <img [src]="logo()" alt="Logo preview" class="img-fluid h-100 w-100"
+                                            style="object-fit: contain;">
+                                        } @else {
+                                        <i class="bi bi-image text-muted fs-2"></i>
+                                        }
+                                    </div>
+
+                                    <div class="w-100">
+                                        <input type="file" #fileInput formControlName="logo" class="form-control d-none"
+                                            (change)="fotoSubida($event)" accept="image/*">
+                                        <button type="button" class="btn btn-primario w-100"
+                                            (click)="fileInput.click()">
+                                            <i class="bi bi-upload me-2"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Teléfono</label>
+                                <input type="text" formControlName="telefono" class="form-control custom-input"
+                                    placeholder="Ej: 953123456">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card-footer bg-light p-4 border-0 text-center">
+                        <button type="submit" class="btn btn-primario px-4 py-2 shadow-sm"
+                            [disabled]="perfilForm.invalid">
+                            <i class="bi bi-cloud-arrow-up me-1"></i> Actualizar mis datos
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,19 +9,21 @@ import { Observable, tap } from 'rxjs';
 })
 export class Auth {
   private authApi_URL = 'http://localhost:8080/api/auth';
-  public rol = signal<string>("");  
+  private rol = signal<string>("");  
+  private email = signal<string>(""); 
   router = inject(Router);
 
   constructor(private http: HttpClient) {
     this.setRol();
+    this.setEmail();
   }
 
   registrarCiudadano(ciudadano: any): Observable<any> {
     return this.http.post(this.authApi_URL + '/registrar/ciudadano', ciudadano);
   }
 
-  registrarAyuntamiento(ayuntamiento: any): Observable<any> {
-    return this.http.post(this.authApi_URL + '/registrar/ayuntamiento', ayuntamiento);
+  registrarAyuntamiento(formData: FormData): Observable<any> {
+    return this.http.post(this.authApi_URL + '/registrar/ayuntamiento', formData);
   }
 
   login(credenciales: any): Observable<any> {
@@ -48,6 +50,22 @@ export class Auth {
 
   getRol() {
     return this.rol;
+  }
+
+  setEmail() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decoded: any = jwtDecode(token);
+        this.email.set(decoded.email);
+      } catch (error) {
+        this.logout();
+      }
+    }
+  }
+
+  getEmail() {
+    return this.email;
   }
 
   redireccionarPorRol() {

@@ -34,16 +34,17 @@
                     <tr class="custom-tr">
                         <td class="text-primary fw-bold">#{{ c.id }}</td>
                         <td>
-                            <img [src]="'http://localhost:8080/api/uploads/planos/' + c.mapa" alt="Mapa"
-                                class="rounded border shadow-sm" style="width: 60px; height: 45px; object-fit: cover;"
-                                onerror="this.src='assets/no-map.png'">
+                            
+                            <img [src]="'mapas/' + c.fotoAereaUrl" alt="Mapa"
+                                style="width: 70px; height: 50px; object-fit: contain;"
+                                onerror="this.src='mapas/nomapa.png'">
                         </td>
                         <td>
                             <div class="fw-semibold">{{ c.nombre }}</div>
                         </td>
                         <td>
-                            <div class="badge bg-light text-dark border">
-                                {{ c.ayuntamiento }}
+                            <div class="fw-semibold">
+                                {{ c.localidadAyuntamiento }}
                             </div>
                         </td>
                         <td>
@@ -53,9 +54,6 @@
                             <div class="btn-group btn-group-sm shadow-sm rounded">
                                 <button class="btn btn-outline-primario" (click)="verMapa(c)" title="Ver Mapa ">
                                     <i class="bi bi-map"></i>
-                                </button>
-                                <button class="btn btn-outline-warning" title="Editar">
-                                    <i class="bi bi-pencil-square"></i>
                                 </button>
                                 <button class="btn btn-outline-secundario" (click)="eliminarCementerio(c.id)"
                                     title="Eliminar">

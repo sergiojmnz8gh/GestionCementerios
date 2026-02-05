@@ -16,6 +16,8 @@ public class AyuntamientoRequest {
     @NotBlank(message = "La provincia es obligatoria")
     private String provincia;
 
-    @NotBlank(message = "La contraseña es obligatoria")
     private String password;
+
+    @NotBlank(message = "El teléfono es obligatorio")
+    private String telefono;
 }

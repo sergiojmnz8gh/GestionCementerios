@@ -1,1 +1,62 @@
-<p>editar-perfil works!</p>
+<div class="container py-5 animate__animated animate__fadeIn">
+    <div class="row justify-content-center">
+        <div class="col-lg-9 col-xl-8">
+            <div class="custom-card card shadow-lg">
+
+                <form [formGroup]="perfilForm" (ngSubmit)="actualizar()">
+                    <div class="card-body p-4 p-md-5">
+                        <div class="row g-3">
+                            <div class="col-md-5">
+                                <label class="form-label fw-bold">Nombre</label>
+                                <input type="text" formControlName="nombre" class="form-control custom-input">
+                            </div>
+                            <div class="col-md-7">
+                                <label class="form-label fw-bold">Apellidos</label>
+                                <input type="text" formControlName="apellidos" class="form-control custom-input">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Teléfono</label>
+                                <input type="text" formControlName="telefono" class="form-control custom-input">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Fecha de nacimiento</label>
+                                <input type="date" formControlName="fechaNacimiento" class="form-control custom-input">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Provincia</label>
+                                <select formControlName="provincia" class="form-select custom-input"
+                                    (change)="onProvinciaChange()">
+                                    @for (p of provincias; track p.CPRO) {
+                                    <option [value]="p.CPRO">{{ p.PRO }}</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Localidad</label>
+                                <select formControlName="localidad" class="form-select custom-input">
+                                    @for (l of localidades; track l.DMUN50) {
+                                    <option [value]="l.DMUN50">{{ l.DMUN50 }}</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-bold">Dirección</label>
+                                <input type="text" formControlName="direccion" class="form-control custom-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer bg-light p-4 border-0 text-center">
+                        <button type="submit" class="btn btn-primario px-4 py-2 shadow-sm"
+                            [disabled]="perfilForm.invalid">
+                            <i class="bi bi-cloud-arrow-up me-1"></i> Actualizar mis datos
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

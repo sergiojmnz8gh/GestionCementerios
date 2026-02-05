@@ -32,6 +32,9 @@ public class Ayuntamiento {
     @Column(nullable = false, length = 100)
     private String provincia;
 
+    @Column(nullable = false, length = 20)
+    private String telefono;
+
     @Column(name = "logo_url")
     private String logoUrl;
 
@@ -42,9 +45,10 @@ public class Ayuntamiento {
     @OneToMany(mappedBy = "ayuntamiento", cascade = CascadeType.ALL)
     private List<Cementerio> cementerios;
 
-    public Ayuntamiento(String localidad, String provincia) {
+    public Ayuntamiento(String localidad, String provincia, String telefono) {
         this.localidad = localidad;
         this.provincia = provincia;
+        this.telefono=telefono;
         this.logoUrl = null;
         this.cementerios = null;
     }
