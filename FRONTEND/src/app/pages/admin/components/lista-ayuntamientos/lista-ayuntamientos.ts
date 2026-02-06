@@ -38,7 +38,6 @@ export class ListaAyuntamientos implements OnInit {
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error('Error al cargar ayuntamientos', err);
         this.cargando = false;
       }
     });
@@ -82,12 +81,10 @@ export class ListaAyuntamientos implements OnInit {
     if (this.ayuntamientoSeleccionado) {
       this.ayuntamientoService.actualizar(this.ayuntamientoSeleccionado.id, formData).subscribe({
         next: () => this.finalizarAccion('Ayuntamiento actualizado'),
-        error: (err: any) => console.error(err)
       });
     } else {
       this.authService.registrarAyuntamiento(formData).subscribe({
         next: () => this.finalizarAccion('Ayuntamiento creado'),
-        error: (err: any) => console.error(err)
       });
     }
   }
@@ -102,9 +99,6 @@ export class ListaAyuntamientos implements OnInit {
       this.ayuntamientoService.eliminar(id).subscribe({
         next: () => {
           this.cargarAyuntamientos();
-        },
-        error: (err) => {
-          console.error('Error al eliminar ayuntamiento', err);
         }
       });
     }

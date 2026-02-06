@@ -25,6 +25,14 @@
                     </div>
                 </div>
 
+                @if (errorLogin) {
+                <div class="alert alert-danger d-flex align-items-center py-2"
+                    role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        Email o contraseña incorrectos.
+                </div>
+                }
+
                 <div class="d-grid gap-2">
                     <button type="button" class="btn btn-secundario py-2 fw-bold" (click)="acceder()">
                         Acceder

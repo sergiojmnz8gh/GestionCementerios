@@ -63,15 +63,7 @@ export class RegistroCiudadano implements OnInit {
         provincia: nombreProvincia
       };
 
-      this.ciudadano.registrarCiudadano(datos).subscribe({
-        next: (respuesta) => {
-          console.log('¡Guardado en el Backend!', respuesta);
-        },
-        error: (err) => {
-          console.error('Error al guardar:', err);
-        }
-      });
-      console.log(datos);
+      this.ciudadano.registrarCiudadano(datos);
     }
   }
 }

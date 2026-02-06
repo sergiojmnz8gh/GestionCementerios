@@ -18,6 +18,19 @@
     }
 }
 
+.bg-custom {
+    background-color: var(--color-fondo);
+}
+
+.text-primario {
+    color: var(--color-primario);
+
+}
+
+.subtexto {
+    color: var(--color-texto);
+}
+
 // 2. Tipografía
 .slogan {
     font-weight: 300;
@@ -42,6 +55,11 @@
 
 // 4. Tarjetas (Cards)
 .custom-card {
+    [data-tema="oscuro"] & {
+        background-color: var(--color-fondo);
+        color: var(--color-texto);
+    }
+
     border: none;
     border-top: 5px solid var(--color-secundario);
     border-radius: 20px;
@@ -81,8 +99,8 @@
 }
 
 .btn:disabled {
-    background-color: #cccccc;
-    color: var(--color-texto);
+    background-color: #bbbbbb;
+    color: var(--color-fondo);
     cursor: not-allowed;
     pointer-events: all;
 }

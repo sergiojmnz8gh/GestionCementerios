@@ -14,6 +14,7 @@ import { ListaConcesiones } from './components/lista-concesiones/lista-concesion
 })
 export class Admin {
   vista: string = 'ciudadanos';
+  menuAbierto: boolean = false;
 
   constructor(private auth: Auth) {}
 

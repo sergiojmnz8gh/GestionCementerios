@@ -38,7 +38,6 @@ export class EditarPerfil implements OnInit {
         }
 
       },
-      error: (err: any) => console.error('No se pudo cargar el perfil', err)
     });
   }
 
@@ -64,8 +63,6 @@ export class EditarPerfil implements OnInit {
     };
 
     this.ayuntamientoService.actualizar(this.ayuntamientoParaEditar.id, datosFinales).subscribe({
-      next: () => alert('Perfil actualizado con éxito'),
-      error: (err: any) => console.error(err)
     });
   }
 }

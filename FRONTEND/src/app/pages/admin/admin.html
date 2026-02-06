@@ -1,9 +1,14 @@
 <div class="d-flex min-vh-100 admin-layout">
 
-    <aside class="sidebar shadow">
-        <div class="sidebar-header">
-            <i class="bi bi-shield-lock-fill fs-3 text-white"></i>
-            <h4 class="mb-0 fw-bold">ADMINISTRACIÓN</h4>
+    <aside class="sidebar shadow" [class.active]="menuAbierto">
+        <div class="sidebar-header d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-shield-lock-fill fs-3 text-white me-2"></i>
+                <h4 class="mb-0 fw-bold">ADMIN</h4>
+            </div>
+            <button class="btn text-white d-lg-none p-0" (click)="menuAbierto = false">
+                <i class="bi bi-x-lg fs-4"></i>
+            </button>
         </div>
 
         <nav class="nav nav-pills flex-column px-3 mt-4">
@@ -13,18 +18,15 @@
             </button>
 
             <button class="nav-link mb-2 sidebar-item" [class.active]="vista == 'ayuntamientos'"
-                (click)="vista = 'ayuntamientos'">
-                <i class="bi bi-bank me-3"></i> Ayuntamientos
+                (click)="vista = 'ayuntamientos'"> <i class="bi bi-bank me-3"></i> Ayuntamientos
             </button>
 
             <button class="nav-link mb-2 sidebar-item" [class.active]="vista == 'cementerios'"
-                (click)="vista = 'cementerios'">
-                <i class="bi bi-bank2 me-3"></i> Cementerios
+                (click)="vista = 'cementerios'"> <i class="bi bi-bank2 me-3"></i> Cementerios
             </button>
 
             <button class="nav-link mb-2 sidebar-item" [class.active]="vista == 'concesiones'"
-                (click)="vista = 'concesiones'">
-                <i class="bi bi-file-earmark-text me-3"></i> Concesiones
+                (click)="vista = 'concesiones'"> <i class="bi bi-file-earmark-text me-3"></i> Concesiones
             </button>
         </nav>
 
@@ -36,12 +38,16 @@
         </div>
     </aside>
 
-    <main class="content-area p-5">
+    <div class="sidebar-overlay" *ngIf="menuAbierto" (click)="menuAbierto = false"></div>
 
+    <main class="content-area">
         <header class="content-header shadow-sm">
             <div class="d-flex align-items-center">
+                <button class="btn btn-primario d-lg-none me-3" (click)="menuAbierto = !menuAbierto">
+                    <i class="bi bi-list"></i>
+                </button>
                 <div class="view-indicator me-3"></div>
-                <h4 class="mb-0 fw-bold text-uppercase">
+                <h4 class="mb-0 fw-bold text-uppercase fs-5">
                     {{ vista }}
                 </h4>
             </div>
@@ -49,16 +55,18 @@
             </div>
         </header>
 
-        <div class="view-container animate__animated animate__fadeIn">
-            @if (vista == 'ciudadanos') {
-            <app-lista-ciudadanos></app-lista-ciudadanos>
-            } @else if (vista == 'ayuntamientos') {
-            <app-lista-ayuntamientos></app-lista-ayuntamientos>
-            } @else if (vista == 'cementerios') {
-            <app-lista-cementerios></app-lista-cementerios>
-            } @else if (vista == 'concesiones') {
-            <app-lista-concesiones></app-lista-concesiones>
-            }
+        <div class="view-container mt-4 animate__animated animate__fadeIn">
+            <div class="table-responsive">
+                @if (vista == 'ciudadanos') {
+                <app-lista-ciudadanos></app-lista-ciudadanos>
+                } @else if (vista == 'ayuntamientos') {
+                <app-lista-ayuntamientos></app-lista-ayuntamientos>
+                } @else if (vista == 'cementerios') {
+                <app-lista-cementerios></app-lista-cementerios>
+                } @else if (vista == 'concesiones') {
+                <app-lista-concesiones></app-lista-concesiones>
+                }
+            </div>
         </div>
     </main>
 </div>

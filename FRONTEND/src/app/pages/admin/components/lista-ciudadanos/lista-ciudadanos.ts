@@ -38,7 +38,6 @@ export class ListaCiudadanos implements OnInit {
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error('Error al cargar ciudadanos', err);
         this.cargando = false;
       }
     });
@@ -75,12 +74,10 @@ export class ListaCiudadanos implements OnInit {
     if (this.ciudadanoSeleccionado) {
       this.ciudadanoService.actualizar(this.ciudadanoSeleccionado.id, datos).subscribe({
         next: () => this.finalizarAccion('Ciudadano actualizado'),
-        error: (err: any) => console.error(err)
       });
     } else {
       this.authService.registrarCiudadano(datos).subscribe({
         next: () => this.finalizarAccion('Ciudadano creado'),
-        error: (err: any) => console.error(err)
       });
     }
   }
@@ -97,7 +94,6 @@ export class ListaCiudadanos implements OnInit {
           this.cargarCiudadanos();
         },
         error: (err) => {
-          console.error('Error al eliminar ciudadano', err);
         }
       });
     }

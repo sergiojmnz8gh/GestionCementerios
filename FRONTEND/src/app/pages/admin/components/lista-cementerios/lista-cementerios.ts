@@ -32,7 +32,6 @@ export class ListaCementerios implements OnInit {
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error('Error al cargar cementerios', err);
         this.cargando = false;
       }
     });

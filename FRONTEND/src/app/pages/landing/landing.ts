@@ -19,7 +19,7 @@ export class Landing implements OnInit {
   form: FormGroup;
   form2: FormGroup;
   busquedaDifunto: string = '';
-  totalCementerios: number = 10;
+  totalCementerios: number = 33;
 
   constructor(private geoApi: GeoApi,private cementerioService: CementerioService, private relo: ChangeDetectorRef, private router: Router) {
     this.form = new FormGroup({

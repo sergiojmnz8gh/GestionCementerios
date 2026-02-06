@@ -4,9 +4,25 @@
 // 2. Variables de colores
 :root {
     --color-primario: #004444;
+    --color-primario-rgb: 0, 68, 68;
     --color-secundario: #660000;
+    --color-secundario-rgb: 102, 0, 0;
     --color-fondo: #f8f8f8;
     --color-texto: #080808;
+    --navbar-grad-1: rgba(222, 222, 222, 0.9);
+    --navbar-grad-2: rgba(111, 111, 111, 0.9);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-tema="oscuro"] {
+    --color-fondo: #111111ee;
+    --color-texto: #e0e0e0;
+    --color-primario: #007777;
+    --color-secundario: #990000;
+    --color-input-bg: #2d2d2d;
+    --navbar-grad-1: rgba(0, 0, 0, 0.95);
+    --navbar-grad-2: rgba(25, 25, 25, 0.95);
+    --shadow-color: rgba(0, 0, 0, 0.6);
 }
 
 // 3. Estilos de Base
@@ -15,14 +31,21 @@ body {
     font-family: 'Zalando Sans', sans-serif;
     color: var(--color-texto);
     background-color: var(--color-fondo);
-    
+
     // Layout
     padding-top: 95px;
 
     // Sobrescritura de colores de Bootstrap
     --bs-primary: var(--color-primario);
-    --bs-primary-rgb: 0, 68, 68;
+    --bs-primary-rgb: var(--color-primario-rgb);
     --bs-secondary: var(--color-secundario);
-    --bs-secondary-rgb: 102, 0, 0;
-    
+    --bs-secondary-rgb: var(--color-secundario-rgb);
+    //Transicion para cambiar al modo oscuro
+    transition: background-color 0.3s ease;
 }
+
+.custom-card {
+    [data-tema="oscuro"] & {
+        background-color: var(--color-fondo);
+        color: var(--color-texto);
+    }}

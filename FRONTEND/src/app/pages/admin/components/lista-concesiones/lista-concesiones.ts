@@ -34,7 +34,6 @@ export class ListaConcesiones implements OnInit {
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error('Error al cargar concesiones', err);
         this.cargando = false;
       }
     });

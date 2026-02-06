@@ -18,7 +18,7 @@ public interface ConcesionMapper {
 
     default Integer[] mapParcelas(List<Parcela> parcelas) {
         if (parcelas == null) return new Integer[0];
-        return parcelas.stream()    
+        return parcelas.stream()
                 .map(Parcela::getId)
                 .toArray(Integer[]::new);
     }

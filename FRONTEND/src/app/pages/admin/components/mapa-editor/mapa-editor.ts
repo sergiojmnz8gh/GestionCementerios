@@ -211,7 +211,6 @@ export class MapaEditor implements AfterViewInit {
           coordenadas_poligono: JSON.stringify(obj.toObject(['left', 'top', 'width', 'height', 'scaleX', 'scaleY', 'angle']))
         };
       });
-    console.log("Datos para el servidor:", listaGuardar);
   }
 
   borrarSeleccionado() {

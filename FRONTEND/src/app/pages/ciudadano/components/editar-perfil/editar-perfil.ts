@@ -56,7 +56,6 @@ export class EditarPerfil implements OnInit {
         });
       }
     },
-    error: (err: any) => console.error('No se pudo cargar el perfil', err)
   });
   }
 
@@ -82,9 +81,6 @@ export class EditarPerfil implements OnInit {
     provincia: nombreProv
   };
 
-  this.ciudadanoService.actualizar(this.ciudadanoParaEditar.id, datosFinales).subscribe({
-    next: () => alert('Perfil actualizado con éxito'),
-    error: (err: any) => console.error(err)
-  });
+  this.ciudadanoService.actualizar(this.ciudadanoParaEditar.id, datosFinales);
   }
 }

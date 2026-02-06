@@ -36,6 +36,14 @@
     }
 }
 
+.alert-danger {
+    border: none;
+    border-left: 4px solid #dc3545;
+    background-color: #f8d7da;
+    color: #842029;
+    margin-bottom: 1.5rem;
+}
+
 // 4. Enlaces
 .link-primario {
     color: var(--color-primario);
