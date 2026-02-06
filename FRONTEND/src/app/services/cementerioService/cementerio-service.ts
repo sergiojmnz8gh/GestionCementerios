@@ -24,6 +24,14 @@ export class CementerioService {
     return this.http.get<Cementerio[]>(this.cementerioApi_URL + '/localidad/' + localidadEscapada);
   }
 
+  registrar(formData: FormData): Observable<Cementerio> {
+    return this.http.put<Cementerio>(this.cementerioApi_URL + '/registrar/', formData);
+  }
+
+  actualizar(id: number, formData: FormData): Observable<Cementerio> {
+    return this.http.put<Cementerio>(this.cementerioApi_URL + '/actualizar/' + id, formData);
+  }
+
   eliminar(id: number): Observable<void> {
     return this.http.delete<void>(this.cementerioApi_URL + '/eliminar/' + id);
   }

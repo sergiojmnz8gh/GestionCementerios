@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="col-md-4 text-md-end mt-3 mt-md-0">
-            <button class="btn btn-secundario shadow-sm px-4">
+            <button class="btn btn-secundario shadow-sm px-4" (click)="abrirModal()">
                 <i class="bi bi-plus me-2"></i> Nuevo Cementerio
             </button>
         </div>
@@ -37,7 +37,7 @@
                             
                             <img [src]="'mapas/' + c.fotoAereaUrl" alt="Mapa"
                                 style="width: 70px; height: 50px; object-fit: contain;"
-                                onerror="this.src='mapas/nomapa.png'">
+                                onerror="this.src='mapas/nomapa.png'" (click)="verMapa(c.id)">
                         </td>
                         <td>
                             <div class="fw-semibold">{{ c.nombre }}</div>
@@ -52,8 +52,8 @@
                         </td>
                         <td>
                             <div class="btn-group btn-group-sm shadow-sm rounded">
-                                <button class="btn btn-outline-primario" (click)="verMapa(c)" title="Ver Mapa ">
-                                    <i class="bi bi-map"></i>
+                                <button class="btn btn-outline-primario" (click)="editarCementerio(c)" title="Editar">
+                                    <i class="bi bi-pencil-square"></i>
                                 </button>
                                 <button class="btn btn-outline-secundario" (click)="eliminarCementerio(c.id)"
                                     title="Eliminar">
@@ -80,3 +80,14 @@
         </div>
     </div>
 </div>
+
+@if (mostrarModal) {
+<div class="modal-backdrop fade show"></div>
+<div class="modal fade show d-block" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <app-form-cementerio class="w-100" [cementerioParaEditar]="cementerioSeleccionado"
+            (cerrar)="mostrarModal = false" (guardar)="procesarGuardado($event)">
+        </app-form-cementerio>
+    </div>
+</div>
+}

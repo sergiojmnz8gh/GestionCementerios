@@ -24,7 +24,6 @@ export class FormAyuntamiento implements OnInit {
   constructor(private geoApi: GeoApi, private relo: ChangeDetectorRef) {
     this.registroForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      logo: new FormControl('', [Validators.required]),
       provincia: new FormControl('', [Validators.required]),
       localidad: new FormControl('', [Validators.required]),
       telefono: new FormControl('', [Validators.required]),

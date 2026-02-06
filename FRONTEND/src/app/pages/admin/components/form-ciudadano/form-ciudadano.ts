@@ -15,7 +15,6 @@ export class FormCiudadano implements OnInit {
   @Input() ciudadanoParaEditar: Ciudadano | null = null;
   @Output() cerrar = new EventEmitter<void>();
   @Output() guardar = new EventEmitter<any>();
-
   registroForm: FormGroup;
   provincias: any[] = [];
   localidades: any[] = [];

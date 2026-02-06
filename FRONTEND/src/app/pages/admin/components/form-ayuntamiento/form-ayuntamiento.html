@@ -13,7 +13,8 @@
             <div class="row g-3">
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Email</label>
-                    <input type="email" formControlName="email" class="form-control custom-input">
+                    <input type="email" formControlName="email" class="form-control custom-input bg-light"
+                        [readonly]="ayuntamientoParaEditar">
                 </div>
                 <div class="col-md-3">
                     <label class="form-label fw-bold text-verde">Logo</label>
@@ -44,21 +45,33 @@
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Provincia</label>
+
+                    @if (ayuntamientoParaEditar) {
+                    <input type="text" [value]="ayuntamientoParaEditar.provincia" class="form-control custom-input bg-light"
+                        readonly>
+                    } @else {
                     <select formControlName="provincia" class="form-select custom-input" (change)="onProvinciaChange()">
                         <option value="">Seleccione provincia...</option>
                         @for (p of provincias; track p.CPRO) {
                         <option [value]="p.CPRO">{{ p.PRO }}</option>
                         }
                     </select>
+                    }
                 </div>
+
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Localidad</label>
+
+                    @if (ayuntamientoParaEditar) {
+                    <input type="text" formControlName="localidad" class="form-control custom-input bg-light" readonly>
+                    } @else {
                     <select formControlName="localidad" class="form-select custom-input">
                         <option value="">Seleccione localidad...</option>
                         @for (l of localidades; track l.DMUN50) {
                         <option [value]="l.DMUN50">{{ l.DMUN50 }}</option>
                         }
                     </select>
+                    }
                 </div>
             </div>
         </div>
